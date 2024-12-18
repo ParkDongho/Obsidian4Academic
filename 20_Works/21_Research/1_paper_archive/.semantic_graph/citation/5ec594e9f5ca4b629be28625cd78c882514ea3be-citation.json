@@ -1,0 +1,1115 @@
+[
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "4f2983c7260d15561f9b6944cb88ee9db54dd029",
+            "title": "STRIVE: Empowering a Low Power Tensor Processing Unit with Fault Detection and Error Resilience",
+            "venue": "ACM Transactions on Design Automation of Electronic Systems",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "1559d88f4c4c4fe08e4ed0b1dd439420b29b171c",
+            "title": "CiMSAT: Exploiting SAT Analysis to Attack Compute-in-Memory Architecture Defenses",
+            "venue": "CCS",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "901e913757406eb8bf398bf1642f2c793780609f",
+            "title": "An energy-efficient near-data processing accelerator for DNNs to optimize memory accesses",
+            "venue": "Journal of Systems Architecture",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "60a533c1b5f2497922712b145e38b0bc5f4053ad",
+            "title": "SENNA: Unified Hardware/Software Space Exploration for Parametrizable Neural Network Accelerators",
+            "venue": "ACM Transactions on Embedded Computing Systems",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "1cd0f456262cc95c3ffd0b493ddc90b9ac10d20d",
+            "title": "Distributed Training of Large Language Models on AWS Trainium",
+            "venue": "Proceedings of the ACM Symposium on Cloud Computing",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "554e37e5be5404932d7f79f540e7b11c8f7d83ee",
+            "title": "Quantized symbolic time series approximation",
+            "venue": "",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "b687f5dc5312e7b032d38dcb281327377007b4fb",
+            "title": "Optimizing computer vision algorithms with TVM on VLIW architecture based on RVV",
+            "venue": "The Journal of Supercomputing",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "1d9fecac9581c1de9b4f3a204375bc0096a577ad",
+            "title": "Sparsepipe: Sparse Inter-operator Dataflow Architecture with Cross-Iteration Reuse",
+            "venue": "2024 57th IEEE/ACM International Symposium on Microarchitecture (MICRO)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "ca1aa67f8bd4d8ea8ca1bb327f17efeceaf18514",
+            "title": "Stellar: An Automated Design Framework for Dense and Sparse Spatial Accelerators",
+            "venue": "2024 57th IEEE/ACM International Symposium on Microarchitecture (MICRO)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "dd3eb82f27414103f58c833f9b1ad2c5586dd225",
+            "title": "Terminus: A Programmable Accelerator for Read and Update Operations on Sparse Data Structures",
+            "venue": "2024 57th IEEE/ACM International Symposium on Microarchitecture (MICRO)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "e7af9aaf261ff2d8465948b2762590f5a587a8dc",
+            "title": "The TYR Dataflow Architecture: Improving Locality by Taming Parallelism",
+            "venue": "2024 57th IEEE/ACM International Symposium on Microarchitecture (MICRO)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "090ff373134d620b7357b130207da5b400b8df76",
+            "title": "Demystifying a CXL Type-2 Device: A Heterogeneous Cooperative Computing Perspective",
+            "venue": "2024 57th IEEE/ACM International Symposium on Microarchitecture (MICRO)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "4b1cf09dc50194160d7066d4f8e6dd3ad931f515",
+            "title": "GOURD: Tensorizing Streaming Applications to Generate Multi-Instance Compute Platforms",
+            "venue": "IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "86ca7c1e4445ffa7934c5fd8b4289f0b3983ad63",
+            "title": "How Systolic Array Dataflow impacts on the resilience to hardware faults",
+            "venue": "2024 IEEE International Conference on Design, Test and Technology of Integrated Systems (DTTIS)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "2693b67b62b92ceb751d3ec98bc7b70a250262ad",
+            "title": "Reducing Data Bottlenecks in Distributed, Heterogeneous Neural Networks",
+            "venue": "",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "211ae4da4430730a90de1dc3b52742e96c6ab335",
+            "title": "What is Left After Distillation? How Knowledge Transfer Impacts Fairness and Bias",
+            "venue": "ArXiv",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology",
+            "background"
+        ],
+        "isInfluential": true,
+        "citingPaper": {
+            "paperId": "c3c75a6945ffa0d431259f959de8bd3026d8e161",
+            "title": "AutoAI2C: An Automated Hardware Generator for DNN Acceleration on Both FPGA and ASIC",
+            "venue": "IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "6225661049bcb744d23763b18db4a9e62e565a05",
+            "title": "SongC: A Compiler for Hybrid Near-Memory and In-Memory Many-Core Architecture",
+            "venue": "IEEE Transactions on Computers",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "62eb826925e8ff8c77c9f9cd9dea3ef65a250572",
+            "title": "An Energy-Efficient Edge Processor for Radar-Based Continuous Fall Detection Utilizing Mixed-Radix FFT and Updated Blockwise Computation",
+            "venue": "IEEE Internet of Things Journal",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "947687c87676f81a85301f1a7e8c1957f12126af",
+            "title": "Algorithms for scheduling CNNs on multicore MCUs at the neuron and layer levels",
+            "venue": "Microprocess. Microsystems",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "result",
+            "methodology"
+        ],
+        "isInfluential": true,
+        "citingPaper": {
+            "paperId": "541cfc082c3d3164a4132246176e36c49d1b01ff",
+            "title": "EcoFlow: Efficient Convolutional Dataflows on Low-Power Neural Network Accelerators",
+            "venue": "IEEE Transactions on Computers",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology",
+            "background"
+        ],
+        "isInfluential": true,
+        "citingPaper": {
+            "paperId": "8213eb342f9a4198215ba8d4b554a8662c1d9f5a",
+            "title": "LoopTree: Exploring the Fused-Layer Dataflow Accelerator Design Space",
+            "venue": "IEEE Transactions on Circuits and Systems for Artificial Intelligence",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "e6641060a4cd5487272621fc9c7d7ef6f953c43d",
+            "title": "Application of Object Detection Algorithms in Non-Destructive Testing of Pressure Equipment: A Review",
+            "venue": "Sensors",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "f440929817002159a49770ca9649b1a6653b63d5",
+            "title": "Systolic Array Architecture for Multitasking Neural Processing Unit",
+            "venue": "2024 29th International Conference on Automation and Computing (ICAC)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "2bceedbb2c199e99f15403dcb1e29e60f5ee9d4c",
+            "title": "An Im2col Architecture Using The Benes Network For Deep Learning Hardware Accelerators",
+            "venue": "2024 21st International SoC Design Conference (ISOCC)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "7b60ef95dd7227face37245523fc2896590353d0",
+            "title": "Scratchpad Memory Management for Deep Learning Accelerators",
+            "venue": "ICPP",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "7e64af90d42a1bdeaf961b40bb5f527da81daebe",
+            "title": "M-DFCPP: A runtime library for multi-machine dataflow computing",
+            "venue": "Concurr. Comput. Pract. Exp.",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "c876126b466cd6f544170dd46aea99386adae020",
+            "title": "TrIM: Triangular Input Movement Systolic Array for Convolutional Neural Networks - Part II: Architecture and Hardware Implementation",
+            "venue": "ArXiv",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "b9a635ae5fb1efda3e160b24baded46a384e0792",
+            "title": "LowPASS: A Low power PIM-based accelerator with Speculative Scheme for SNNs",
+            "venue": "ISLPED",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "ae5dae73060edba830a0f6527c1c423bdb9d6583",
+            "title": "Systolic Array Acceleration of Spiking Neural Networks with Application-Independent Split-Time Temporal Coding",
+            "venue": "ISLPED",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "b58f650c9180cbea2623d62095a85fff01c2cc92",
+            "title": "TrIM: Triangular Input Movement Systolic Array for Convolutional Neural Networks - Part I: Dataflow and Analytical Modelling",
+            "venue": "ArXiv",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "60c129762be8a25c7fae2f2ec8e5015880832d11",
+            "title": "TensorMap: A Deep RL-Based Tensor Mapping Framework for Spatial Accelerators",
+            "venue": "IEEE Transactions on Computers",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "4b4ed71e2dea692e6870b42be0eba466c3b92cf1",
+            "title": "A Post-Quantum Encryption Mechanism Based on Convolutional Neural Network Accelerator",
+            "venue": "IEEE Transactions on Circuits and Systems II: Express Briefs",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "bb9b789795041047c8b1f4bfc2a5fab9a3b32c59",
+            "title": "A Survey on Hardware Accelerator Design of Deep Learning for Edge Devices",
+            "venue": "Wirel. Pers. Commun.",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "0bd242c0f1b15be17f6605388bdf9cb24629c590",
+            "title": "Hybrid Dynamic Pruning: A Pathway to Efficient Transformer Inference",
+            "venue": "ArXiv",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "6755545e26e1aea6cee120f38a13ac4750d9d2a3",
+            "title": "Automated Computational Energy Minimization of ML Algorithms using Constrained Bayesian Optimization",
+            "venue": "ArXiv",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "675e98c12747514e710b46a451498f2ddcf6023a",
+            "title": "Enhancing Computation-Efficiency of Deep Neural Network Processing on Edge Devices through Serial/Parallel Systolic Computing",
+            "venue": "Mach. Learn. Knowl. Extr.",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "02af2cfb9fbd08d2c14fd2f33afe04d39e155061",
+            "title": "Carbon-Aware Design of DNN Accelerators: Bridging Performance and Sustainability",
+            "venue": "2024 IEEE Computer Society Annual Symposium on VLSI (ISVLSI)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology",
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "5f20bb94776f5ee71a5025e5f2f674d8cd02c957",
+            "title": "Fast-OverlaPIM: A Fast Overlap-driven Mapping Framework for Processing In-Memory Neural Network Acceleration",
+            "venue": "IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "bc83d64b76a0a1155cde4567b9322b8264c60856",
+            "title": "A Quality-Aware Voltage Overscaling Framework to Improve the Energy Efficiency and Lifetime of TPUs Based on Statistical Error Modeling",
+            "venue": "IEEE Access",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "7e96f0c0f357261dcfac11daf554f169f9ad1806",
+            "title": "LLMCompass: Enabling Efficient Hardware Design for Large Language Model Inference",
+            "venue": "2024 ACM/IEEE 51st Annual International Symposium on Computer Architecture (ISCA)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "b5110e7254535f95f07935fa9c693a661d588421",
+            "title": "Soter: Analytical Tensor-Architecture Modeling and Automatic Tensor Program Tuning for Spatial Accelerators",
+            "venue": "2024 ACM/IEEE 51st Annual International Symposium on Computer Architecture (ISCA)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "8f77e92fe4da01fc2775d8352a4fd1b0a6882585",
+            "title": "Trapezoid: A Versatile Accelerator for Dense and Sparse Matrix Multiplications",
+            "venue": "2024 ACM/IEEE 51st Annual International Symposium on Computer Architecture (ISCA)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "b161ddc9677703aab19be3c648153d51bad68974",
+            "title": "ReIPE: Recycling Idle PEs in CNN Accelerator for Vulnerable Filters Soft-Error Detection",
+            "venue": "ACM Trans. Archit. Code Optim.",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "c3600cec65061790535f4610a78f97d11a7f5182",
+            "title": "The Magnificent Seven Challenges and Opportunities in Domain-Specific Accelerator Design for Autonomous Systems",
+            "venue": "DAC",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "0f0ceb4538606b05637d0a11201a1883f68f5a06",
+            "title": "Tender: Accelerating Large Language Models via Tensor Decomposition and Runtime Requantization",
+            "venue": "2024 ACM/IEEE 51st Annual International Symposium on Computer Architecture (ISCA)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "6c4e682f1f4c0da9d69ead2f21f2d475622949db",
+            "title": "FuseMax: Leveraging Extended Einsums to Optimize Attention Accelerator Design",
+            "venue": "2024 57th IEEE/ACM International Symposium on Microarchitecture (MICRO)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "50ea1bdddde409015ff5ad77ca56baaaee30d73d",
+            "title": "SAL: Optimizing the Dataflow of Spin-based Architectures for Lightweight Neural Networks",
+            "venue": "ACM Trans. Archit. Code Optim.",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "5e740d970e3c94a7aaf2650efcfbbb9ea25cc1e5",
+            "title": "Modelling, Data Mapping, and Evaluation of Analog Multiply-And-Accumulate Components in Quantized CNNs",
+            "venue": "2024 35th Irish Signals and Systems Conference (ISSC)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "fc21a964f372c5d9de24ecc525876f8b126c756f",
+            "title": "Communication Minimized Model-Architecture Co-design for Efficient Convolution Acceleration",
+            "venue": "ACM Great Lakes Symposium on VLSI",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology",
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "ea49668207dd094f00d399cf25c40516bfe709c4",
+            "title": "A dataflow architecture with distributed control for DNN acceleration",
+            "venue": "2024 13th Mediterranean Conference on Embedded Computing (MECO)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "8bfdf712fae59f90401d4389b0499d6d693ce5b4",
+            "title": "Joint Optimization of Communication and Storage Latencies for Vehicular Edge Computing",
+            "venue": "IEEE Transactions on Intelligent Transportation Systems",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "a46eb6311e4ecf6ab816514590f272a79f0d694d",
+            "title": "NEOCNN: NTT-Enabled Optical Convolution Neural Network Accelerator",
+            "venue": "ICS",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "ceff700695d07044fd2cd2f52aeedaaecbbd5013",
+            "title": "CLAY: CXL-based Scalable NDP Architecture Accelerating Embedding Layers",
+            "venue": "ICS",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "55b601400d2cf4b7994c7df62dd864c8141a5679",
+            "title": "LCM: LLM-focused Hybrid SPM-cache Architecture with Cache Management for Multi-Core AI Accelerators",
+            "venue": "ICS",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "6f2c335123e56d6697cdad1178178f9f515f2531",
+            "title": "Harmonica: Hybrid Accelerator to Overcome Imperfections of Mixed-signal DNN Accelerators",
+            "venue": "2024 IEEE International Parallel and Distributed Processing Symposium (IPDPS)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology",
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "2d973c0ff33d6963b7072479ae66776b7da35069",
+            "title": "BOLD: Boolean Logic Deep Learning",
+            "venue": "ArXiv",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "47b7d280339a9375f873b79ffbd8260a3c919a61",
+            "title": "Aries: A DNN Inference Scheduling Framework for Multi-core Accelerators",
+            "venue": "CNIOT",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "e4af0d37648832478292160f06348bb1a49a4283",
+            "title": "Efficient Orchestrated AI Workflows Execution on Scale-Out Spatial Architecture",
+            "venue": "IEEE Transactions on Circuits and Systems for Artificial Intelligence",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology",
+            "background"
+        ],
+        "isInfluential": true,
+        "citingPaper": {
+            "paperId": "99df9168abaf1279eb5ed1200bd395cf0acf3f7d",
+            "title": "Energy Complexity of Convolutional Neural Networks",
+            "venue": "Neural Computation",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "f622b79f842f7c8745a053169b69c0e0c3a688ef",
+            "title": "PBN: Progressive Batch Normalization for DNN Training on Edge Device",
+            "venue": "2024 IEEE International Symposium on Circuits and Systems (ISCAS)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "09f1a618c35360c05b21001e37ac6dd54d15d9e6",
+            "title": "MAC-DO: DRAM-Based Multi-Bit Analog Accelerator Using Output Stationary",
+            "venue": "2024 IEEE International Symposium on Circuits and Systems (ISCAS)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "ada20f57caad2dd2d0702e540708b41b0021b302",
+            "title": "A FPGA-based Energy-Efficient Processor for Radar-based Continuous Fall Detection",
+            "venue": "2024 IEEE International Symposium on Circuits and Systems (ISCAS)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "eecdfa646996cbaf5a20318fdff92f0874d2ea82",
+            "title": "High-Utilization GPGPU Design for Accelerating GEMM Workloads: An Incremental Approach",
+            "venue": "2024 IEEE International Symposium on Circuits and Systems (ISCAS)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "e1b870b1b44965f9418e14c2b959a40e5dd8f74b",
+            "title": "RCW-Pruner: Row-Column Wise Pruning Framework on Systolic Array",
+            "venue": "2024 10th IEEE International Conference on High Performance and Smart Computing (HPSC)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "7b415fe7744a2afd7f9fb723ebed25a7f5510915",
+            "title": "Efficiently Synthesizing Lowest Cost Rewrite Rules for Instruction Selection",
+            "venue": "ArXiv",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "6c714906e1bf386d3c7c6d7798ca26afdad9b421",
+            "title": "TSB: Tiny Shared Block for Efficient DNN Deployment on NVCIM Accelerators",
+            "venue": "ArXiv",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "444aa31192c87f996bb01fa856cb765a19cd5323",
+            "title": "Robust Implementation of Retrieval-Augmented Generation on Edge-based Computing-in-Memory Architectures",
+            "venue": "ArXiv",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "460f100281b983114e7a3a60a6576444703313b9",
+            "title": "FullSparse: A Sparse-Aware GEMM Accelerator with Online Sparsity Prediction",
+            "venue": "CF",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "8cf771db65933212e59c80a9df180f530ad3792d",
+            "title": "DNNOPT: A Framework for Efficiently Selecting On-chip Memory Loop Optimizations of DNN Accelerators",
+            "venue": "CF",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "b2544ed361f49dfbd75abae0636be8cdec46c827",
+            "title": "PipeOrgan: Efficient Inter-operation Pipelining with Flexible Spatial Organization and Interconnects",
+            "venue": "ArXiv",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": true,
+        "citingPaper": {
+            "paperId": "1c539fa718bba5363f9b44043d45006a6df660ea",
+            "title": "On energy complexity of fully-connected layers",
+            "venue": "Neural Networks",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "5a0a04415203ad7f0d6264687126393405ab4b3c",
+            "title": "Improving the computational efficiency and flexibility of FPGA-based CNN accelerator through loop optimization",
+            "venue": "Microelectronics Journal",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology",
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "0199546a15f76ff1df7ab4e16bdc4d5a9adedc39",
+            "title": "General Purpose Deep Learning Accelerator Based on Bit Interleaving",
+            "venue": "IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "8ea6eeef216f7177a7e87746ba99530929c199a3",
+            "title": "Layer-Sensitive Neural Processing Architecture for Error-Tolerant Applications",
+            "venue": "IEEE Transactions on Very Large Scale Integration (VLSI) Systems",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "1cabefff2260233e74e63777d2e630ab3bf30f90",
+            "title": "A Review on the emerging technology of TinyML",
+            "venue": "ACM Comput. Surv.",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "81293fd070a05b6636468fbf5f1452df12394a2f",
+            "title": "gem5-NVDLA: A Simulation Framework for Compiling, Scheduling and Architecture Evaluation on AI System-on-Chips",
+            "venue": "ACM Transactions on Design Automation of Electronic Systems",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology",
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "f05ad0a7811a161c687defafba3580f6ffaf909f",
+            "title": "Carat: Unlocking Value-Level Parallelism for Multiplier-Free GEMMs",
+            "venue": "ASPLOS",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "6c29c3159cdd79e314f331fddc94ddf2542d0e52",
+            "title": "IANUS: Integrated Accelerator based on NPU-PIM Unified Memory System",
+            "venue": "ASPLOS",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology",
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "c93baba3230ef2136e525c9b1e949f22ba934623",
+            "title": "Tandem Processor: Grappling with Emerging Operators in Neural Networks",
+            "venue": "ASPLOS",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "f9a32f3e889273e381764a05eddb6bbf072f9e76",
+            "title": "GSCore: Efficient Radiance Field Rendering via Architectural Support for 3D Gaussian Splatting",
+            "venue": "ASPLOS",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology",
+            "background"
+        ],
+        "isInfluential": true,
+        "citingPaper": {
+            "paperId": "3df738e1fe3e4834a7a23feefa32750671a5246e",
+            "title": "Computational Network-on-Chip as Convolution Engine",
+            "venue": "2024 International VLSI Symposium on Technology, Systems and Applications (VLSI TSA)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "f695616aba73d30ab6bee434e5c44ba5cf61bafc",
+            "title": "A Feature Map Lossless Compression Framework for Convolutional Neural Network Accelerators",
+            "venue": "2024 IEEE 6th International Conference on AI Circuits and Systems (AICAS)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "fcc29816380fbe6d4e7421e22d4582153e823253",
+            "title": "Intellectual Property Protection of Deep-Learning Systems via Hardware/Software Co-Design",
+            "venue": "IEEE Design & Test",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "5a5db66b0077db5afc1190fc937c8154e9cbefc3",
+            "title": "CUTE: A scalable CPU-centric and Ultra-utilized Tensor Engine for convolutions",
+            "venue": "J. Syst. Archit.",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "f5ee953fba3959b63db569ae03432f7c5e8aeb44",
+            "title": "Rubick: A Unified Infrastructure for Analyzing, Exploring, and Implementing Spatial Architectures via Dataflow Decomposition",
+            "venue": "IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "5c79bc3d36fef5bce55c291b4eb0108a95fcb8aa",
+            "title": "A Multiplier-Free RNS-Based CNN Accelerator Exploiting Bit-Level Sparsity",
+            "venue": "IEEE Transactions on Emerging Topics in Computing",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "f464f48169dd30869662fd7e4e89e6b0a2ba0628",
+            "title": "Survey of convolutional neural network accelerators on field-programmable gate array platforms: architectures and optimization techniques",
+            "venue": "J. Real Time Image Process.",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "af67e9e91cef013c3acac65ad3f069d5fd4f178c",
+            "title": "Leveraging Bit-Serial Architectures for Hardware-Oriented Deep Learning Accelerators with Column-Buffering Dataflow",
+            "venue": "Electronics",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "39eece129106d7df791e8424cc9f24fac5b07f7e",
+            "title": "Analog Printed Spiking Neuromorphic Circuit",
+            "venue": "2024 Design, Automation & Test in Europe Conference & Exhibition (DATE)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "821f39b7f5398948cbb488bada8e63e1748d831b",
+            "title": "A Hardware Accelerated Autoencoder for RF Communication Using Short-Time-Fourier- Transform Assisted Convolutional Neural Network",
+            "venue": "2024 Design, Automation & Test in Europe Conference & Exhibition (DATE)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "f1ced0a38d19824cf081f61a71e41eff02eacc1c",
+            "title": "DiMO-Sparse: Differentiable Modeling and Optimization of Sparse CNN Dataflow and Hardware Architecture",
+            "venue": "2024 Design, Automation & Test in Europe Conference & Exhibition (DATE)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "c8475ce85a7e87f022973e1cc917abbe7b2c6981",
+            "title": "ViTA: A Highly Efficient Dataflow and Architecture for Vision Transformers",
+            "venue": "2024 Design, Automation & Test in Europe Conference & Exhibition (DATE)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "b434e59ed6f47a18bd4d41227a6efdfaa36162cf",
+            "title": "Accelerating Recommender Model Training by Dynamically Skipping Stale Embeddings",
+            "venue": "",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "eff2e356bf3184fa94103fb424ae2f7f4122d6d2",
+            "title": "Hardware for Deep Learning Acceleration",
+            "venue": "Adv. Intell. Syst.",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "f26d7cae2eb64e49689439b879279b244fac34e0",
+            "title": "System Support for Environmentally Sustainable Computing in Data Centers",
+            "venue": "2024 IEEE Computer Society Annual Symposium on VLSI (ISVLSI)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": true,
+        "citingPaper": {
+            "paperId": "f1d143a03dc2ff31ef4bdd7483d444ade9552141",
+            "title": "FlexNN: A Dataflow-aware Flexible Deep Learning Accelerator for Energy-Efficient Edge Devices",
+            "venue": "ArXiv",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "704b8448c588dc0f15daf132b25e50d05635efee",
+            "title": "LUTein: Dense-Sparse Bit-Slice Architecture With Radix-4 LUT-Based Slice-Tensor Processing Units",
+            "venue": "2024 IEEE International Symposium on High-Performance Computer Architecture (HPCA)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "7dff6faa8d6749a841091875d20325af2933de28",
+            "title": "FreFlex: A High-Performance Processor for Convolution and Attention Computations via Sparsity-Adaptive Dynamic Frequency Boosting",
+            "venue": "IEEE Journal of Solid-State Circuits",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "35ffd70e8bc80906ac4d139155c93d9d28f157c8",
+            "title": "A Low-Latency FPGA Accelerator for YOLOv3-Tiny With Flexible Layerwise Mapping and Dataflow",
+            "venue": "IEEE Transactions on Circuits and Systems I: Regular Papers",
+            "year": 2024
+        }
+    }
+]

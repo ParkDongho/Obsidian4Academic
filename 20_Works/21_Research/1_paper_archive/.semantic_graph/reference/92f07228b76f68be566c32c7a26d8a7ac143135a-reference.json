@@ -1,0 +1,452 @@
+[
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "51eb6be66c740a1774d1e0e8a85c89d2e9f19367",
+            "title": "A Mixed-Signal Binarized Convolutional-Neural-Network Accelerator Integrating Dense Weight Storage and Multiplication for Reduced Data Movement",
+            "venue": "2018 IEEE Symposium on VLSI Circuits",
+            "year": 2018
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "5f0da3cedda449b72fe36fa78798651a038f515c",
+            "title": "MAERI: Enabling Flexible Dataflow Mapping over DNN Accelerators via Reconfigurable Interconnects",
+            "venue": "ASPLOS",
+            "year": 2018
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "645d34c374d0302433cbbc6100a6405ca55a7d87",
+            "title": "An always-on 3.8\u03bcJ/86% CIFAR-10 mixed-signal binary CNN processor with all memory on chip in 28nm CMOS",
+            "venue": "2018 IEEE International Solid - State Circuits Conference - (ISSCC)",
+            "year": 2018
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "d24e926a28b5b6d66d1807e8f03487e2055ff195",
+            "title": "Rethinking NoCs for spatial neural network accelerators",
+            "venue": "2017 Eleventh IEEE/ACM International Symposium on Networks-on-Chip (NOCS)",
+            "year": 2017
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "2154d8fc2caa334d5fa405a8d81fe6894fe9759e",
+            "title": "Loom: Exploiting Weight and Activation Precisions to Accelerate Convolutional Neural Networks",
+            "venue": "2018 55th ACM/ESDA/IEEE Design Automation Conference (DAC)",
+            "year": 2017
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "5ffb598866917e853087c2600671ecf851d459ca",
+            "title": "Using Dataflow to Optimize Energy Efficiency of Deep Neural Network Accelerators",
+            "venue": "IEEE Micro",
+            "year": 2017
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "e682cb13d1f2bb7440fce13c00bfc25bff8aeb9f",
+            "title": "A 1.06-to-5.09 TOPS/W reconfigurable hybrid-neural-network processor for deep learning applications",
+            "venue": "2017 Symposium on VLSI Circuits",
+            "year": 2017
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "402f850dff86fb601d34b2841e6083ac0f928edd",
+            "title": "SCNN: An accelerator for compressed-sparse convolutional neural networks",
+            "venue": "2017 ACM/IEEE 44th Annual International Symposium on Computer Architecture (ISCA)",
+            "year": 2017
+        }
+    },
+    {
+        "intents": [
+            "methodology",
+            "background"
+        ],
+        "isInfluential": true,
+        "citedPaper": {
+            "paperId": "3647d6d0f151dc05626449ee09cc7bce55be497e",
+            "title": "MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications",
+            "venue": "ArXiv",
+            "year": 2017
+        }
+    },
+    {
+        "intents": [
+            "methodology",
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "2dfeb5a90abc49ab2a80a492a01a4e2c8e92ec22",
+            "title": "In-datacenter performance analysis of a tensor processing unit",
+            "venue": "2017 ACM/IEEE 44th Annual International Symposium on Computer Architecture (ISCA)",
+            "year": 2017
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "dabd5ca5b7d1a25e92f48dbbc12afd0def371c26",
+            "title": "Deep Convolutional Neural Network Architecture With Reconfigurable Computation Patterns",
+            "venue": "IEEE Transactions on Very Large Scale Integration (VLSI) Systems",
+            "year": 2017
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "3f116042f50a499ab794bcc1255915bee507413c",
+            "title": "Efficient Processing of Deep Neural Networks: A Tutorial and Survey",
+            "venue": "Proceedings of the IEEE",
+            "year": 2017
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "ce6403e99465e5e8a48d5c2017fc23976e29fe59",
+            "title": "FlexFlow: A Flexible Dataflow Accelerator Architecture for Convolutional Neural Networks",
+            "venue": "2017 IEEE International Symposium on High Performance Computer Architecture (HPCA)",
+            "year": 2017
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "b8242c9d0fb77a125c30d7b92e2e34a468c0d393",
+            "title": "14.5 Envision: A 0.26-to-10TOPS/W subword-parallel dynamic-voltage-accuracy-frequency-scalable Convolutional Neural Network processor in 28nm FDSOI",
+            "venue": "2017 IEEE International Solid-State Circuits Conference (ISSCC)",
+            "year": 2017
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "368ca66e56b0d42910520a71fe3e28cd36d8037b",
+            "title": "Stripes: Bit-Serial Deep Neural Network Computing",
+            "venue": "IEEE Computer Architecture Letters",
+            "year": 2016
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "bc20f523a6e97800340e57a94d79926fce05572c",
+            "title": "Cambricon-X: An accelerator for sparse neural networks",
+            "venue": "2016 49th Annual IEEE/ACM International Symposium on Microarchitecture (MICRO)",
+            "year": 2016
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "f2dd73ae127c5ee3713a92e1057eddea92fbf207",
+            "title": "A 0.3\u20132.6 TOPS/W precision-scalable processor for real-time large-scale ConvNets",
+            "venue": "2016 IEEE Symposium on VLSI Circuits (VLSI-Circuits)",
+            "year": 2016
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "2f7ae3361b2aafa24fc289252a9cad8f1135edae",
+            "title": "Deeper Depth Prediction with Fully Convolutional Residual Networks",
+            "venue": "2016 Fourth International Conference on 3D Vision (3DV)",
+            "year": 2016
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "5ec594e9f5ca4b629be28625cd78c882514ea3be",
+            "title": "Eyeriss: A Spatial Architecture for Energy-Efficient Dataflow for Convolutional Neural Networks",
+            "venue": "2016 ACM/IEEE 43rd Annual International Symposium on Computer Architecture (ISCA)",
+            "year": 2016
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "592d2e65489f23ebd993dbdc0c84eda9ac8aadbe",
+            "title": "SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <1MB model size",
+            "venue": "ArXiv",
+            "year": 2016
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "2e2b189f668cf2c06ebc44dc9b166648256cf457",
+            "title": "EIE: Efficient Inference Engine on Compressed Deep Neural Network",
+            "venue": "2016 ACM/IEEE 43rd Annual International Symposium on Computer Architecture (ISCA)",
+            "year": 2016
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": true,
+        "citedPaper": {
+            "paperId": "ffdaa12ef011de9dbf43be46d45a3abcc8288965",
+            "title": "Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks",
+            "venue": "IEEE Journal of Solid-State Circuits",
+            "year": 2016
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition",
+            "venue": "2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+            "year": 2015
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision",
+            "venue": "2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+            "year": 2015
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "a5733ff08daff727af834345b9cfff1d0aa109ec",
+            "title": "BinaryConnect: Training Deep Neural Networks with binary weights during propagations",
+            "venue": "NIPS",
+            "year": 2015
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "1ff9a37d766e3a4f39757f5e1b235a42dacf18ff",
+            "title": "Learning both Weights and Connections for Efficient Neural Network",
+            "venue": "NIPS",
+            "year": 2015
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "cf986bfe13a24d4739f95df3a856a3c6e4ed4c1c",
+            "title": "Learning Deconvolution Network for Semantic Segmentation",
+            "venue": "2015 IEEE International Conference on Computer Vision (ICCV)",
+            "year": 2015
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "3468a27c2e3019e1216ee9fe8bbf1ed3a0155ff4",
+            "title": "Optimizing FPGA-based Accelerator Design for Deep Convolutional Neural Networks",
+            "venue": "FPGA",
+            "year": 2015
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "b7cf49e30355633af2db19f35189410c8515e91f",
+            "title": "Deep Learning with Limited Numerical Precision",
+            "venue": "ICML",
+            "year": 2015
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": true,
+        "citedPaper": {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions",
+            "venue": "2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+            "year": 2014
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": true,
+        "citedPaper": {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition",
+            "venue": "ICLR",
+            "year": 2014
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "22e477a9fdde86ab1f8f4dafdb4d88ea37e31fbd",
+            "title": "DianNao: a small-footprint high-throughput accelerator for ubiquitous machine-learning",
+            "venue": "ASPLOS",
+            "year": 2014
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks",
+            "venue": "Commun. ACM",
+            "year": 2012
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "777de11e21d10cb627d109d0f64630115ff7823f",
+            "title": "An FPGA-based stream processor for embedded real-time vision with Convolutional Networks",
+            "venue": "2009 IEEE 12th International Conference on Computer Vision Workshops, ICCV Workshops",
+            "year": 2009
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "858cc54e0b47831c4c9f29238b07b5a0c426f9d9",
+            "title": "On-Chip Networks",
+            "venue": "Synthesis Lectures on Computer Architecture",
+            "year": 2009
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "3a7509a72a01dae5e17f1405ab3d18e1e2fd8157",
+            "title": "Understanding the Limitations of Existing Energy-Efficient Design Approaches for Deep Neural Networks",
+            "venue": "",
+            "year": 2018
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "f8b1b43f284f1246ca015cc002ac949bb67c5645",
+            "title": "Roofline: An Insightful Visual Performance Model for Floating-Point Programs and Multicore Architectures",
+            "venue": "",
+            "year": 2008
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "05c9f99dc6fc7124a4332f909e69d16f23cb7db4",
+            "title": "Open-source Projects",
+            "venue": "",
+            "year": 2007
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": null,
+            "title": "// SPad levels for (f0=0; f0<F0; f0++) { for (n0=0; n0<N0; n0++) { for (e0=0; e0<E; e0++) { for (r0=0; r0<R; n++) { for (c0=0; c0<C0; c++) { for (m0=0; m0<M0",
+            "venue": "",
+            "year": null
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": null,
+            "title": "// DRAM levels for (g3=0; g3<G3; g3++) { for (n3=0; n3<N3; n3++) { for (m3=0; m3<M3; m3++) { for (f3=0",
+            "venue": "",
+            "year": null
+        }
+    }
+]

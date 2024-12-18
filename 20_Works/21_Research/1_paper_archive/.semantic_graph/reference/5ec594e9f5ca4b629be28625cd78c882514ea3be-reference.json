@@ -1,0 +1,512 @@
+[
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "496cc57dd9f4f71dc49af5640364b74266e34cd0",
+            "title": "14.5 Eyeriss: An energy-efficient reconfigurable accelerator for deep convolutional neural networks",
+            "venue": "2016 IEEE International Solid-State Circuits Conference (ISSCC)",
+            "year": 2016
+        }
+    },
+    {
+        "intents": [
+            "methodology",
+            "background"
+        ],
+        "isInfluential": true,
+        "citedPaper": {
+            "paperId": "ffdaa12ef011de9dbf43be46d45a3abcc8288965",
+            "title": "Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks",
+            "venue": "IEEE Journal of Solid-State Circuits",
+            "year": 2016
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition",
+            "venue": "2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+            "year": 2015
+        }
+    },
+    {
+        "intents": [
+            "methodology",
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding",
+            "venue": "ICLR",
+            "year": 2015
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "1adfd146fdacddfe543a7a45d0c3b9c1f1937e8f",
+            "title": "Exploring the potential of heterogeneous Von Neumann/dataflow execution models",
+            "venue": "2015 ACM/IEEE 42nd Annual International Symposium on Computer Architecture (ISCA)",
+            "year": 2015
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "dd9caf7e34acd8ad47fd35fd9d81bd22db202a81",
+            "title": "Origami: A Convolutional Network Accelerator",
+            "venue": "ACM Great Lakes Symposium on VLSI",
+            "year": 2015
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "dbaebcde717a6669b40ebbc598ddb434d8ca93e4",
+            "title": "4.6 A1.93TOPS/W scalable deep learning/inference processor with tetra-parallel MIMD architecture for big-data applications",
+            "venue": "2015 IEEE International Solid-State Circuits Conference - (ISSCC) Digest of Technical Papers",
+            "year": 2015
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "3468a27c2e3019e1216ee9fe8bbf1ed3a0155ff4",
+            "title": "Optimizing FPGA-based Accelerator Design for Deep Convolutional Neural Networks",
+            "venue": "FPGA",
+            "year": 2015
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "b7cf49e30355633af2db19f35189410c8515e91f",
+            "title": "Deep Learning with Limited Numerical Precision",
+            "venue": "ICML",
+            "year": 2015
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "4157ed3db4c656854e69931cb6089b64b08784b9",
+            "title": "DaDianNao: A Machine-Learning Supercomputer",
+            "venue": "2014 47th Annual IEEE/ACM International Symposium on Microarchitecture",
+            "year": 2014
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "9667f8264745b626c6173b1310e2ff0298b09cfc",
+            "title": "Learning Deep Features for Scene Recognition using Places Database",
+            "venue": "NIPS",
+            "year": 2014
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "31c36d445367ba204244bb74893c5654e31c3869",
+            "title": "cuDNN: Efficient Primitives for Deep Learning",
+            "venue": "ArXiv",
+            "year": 2014
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions",
+            "venue": "2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+            "year": 2014
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "f5f1beada9e269b2a7faed8dfe936919ac0c2397",
+            "title": "Minimizing Computation in Convolutional Neural Networks",
+            "venue": "ICANN",
+            "year": 2014
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition",
+            "venue": "ICLR",
+            "year": 2014
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "233b1774f28c9972df2dfcf20dfbb0df45792bd0",
+            "title": "A 240 G-ops/s Mobile Coprocessor for Deep Neural Networks",
+            "venue": "2014 IEEE Conference on Computer Vision and Pattern Recognition Workshops",
+            "year": 2014
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding",
+            "venue": "ACM Multimedia",
+            "year": 2014
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "1b82108089107d726ad6b4167ed59b3de78654f5",
+            "title": "Exploiting spatial architectures for edit distance algorithms",
+            "venue": "2014 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS)",
+            "year": 2014
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "947620a1854655ed91a86b90d12695e05be85983",
+            "title": "1.1 Computing's energy problem (and what we can do about it)",
+            "venue": "2014 IEEE International Solid-State Circuits Conference Digest of Technical Papers (ISSCC)",
+            "year": 2014
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "22e477a9fdde86ab1f8f4dafdb4d88ea37e31fbd",
+            "title": "DianNao: a small-footprint high-throughput accelerator for ubiquitous machine-learning",
+            "venue": "ASPLOS",
+            "year": 2014
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "1109b663453e78a59e4f66446d71720ac58cec25",
+            "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks",
+            "venue": "ICLR",
+            "year": 2013
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation",
+            "venue": "2014 IEEE Conference on Computer Vision and Pattern Recognition",
+            "year": 2013
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "0b71de48a1c7a5d7a7850bbe33a2bb055ea594ef",
+            "title": "Memory-centric accelerator design for Convolutional Neural Networks",
+            "venue": "2013 IEEE 31st International Conference on Computer Design (ICCD)",
+            "year": 2013
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "91ac70c712b1fce4836ffccb25b3ff6c7de0adfd",
+            "title": "Triggered instructions: a control paradigm for spatially-programmed architectures",
+            "venue": "ISCA",
+            "year": 2013
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "d50d7cd78126cd4df5dda62f1a75c89d095bc8a5",
+            "title": "Convolution engine: balancing efficiency & flexibility in specialized computing",
+            "venue": "ISCA",
+            "year": 2013
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks",
+            "venue": "Commun. ACM",
+            "year": 2012
+        }
+    },
+    {
+        "intents": [
+            "result"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "cece950bc68c594e94b8220f1ccdce0eb7b35102",
+            "title": "Towards energy-proportional datacenter memory with mobile DRAM",
+            "venue": "2012 39th Annual International Symposium on Computer Architecture (ISCA)",
+            "year": 2012
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "0963e9b6f45f2b59044caa2114541a7a66ebeec8",
+            "title": "Understanding sources of ineffciency in general-purpose chips",
+            "venue": "Commun. ACM",
+            "year": 2011
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "52206ebb2b53a7cfebfd6025fff6c3621b0b0809",
+            "title": "Power, Programmability, and Granularity: The Challenges of ExaScale Computing",
+            "venue": "2011 IEEE International Parallel & Distributed Processing Symposium",
+            "year": 2011
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "319993de8b5ba6f42a416f6cb7f856268c348baa",
+            "title": "Dynamically Specialized Datapaths for energy efficient computing",
+            "venue": "2011 IEEE 17th International Symposium on High Performance Computer Architecture",
+            "year": 2011
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "15ab4f60005ea42d5e57f365a478b28b92ea2238",
+            "title": "Towards an embedded biologically-inspired machine vision processor",
+            "venue": "2010 International Conference on Field-Programmable Technology",
+            "year": 2010
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "c43025c429b1fbf6f1379f61801a1b40834d62e7",
+            "title": "Convolutional networks and applications in vision",
+            "venue": "Proceedings of 2010 IEEE International Symposium on Circuits and Systems",
+            "year": 2010
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines",
+            "venue": "ICML",
+            "year": 2010
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "e1c4e2fa071046569a05e9cfdf13496d094025dd",
+            "title": "A dynamically configurable coprocessor for convolutional neural networks",
+            "venue": "ISCA",
+            "year": 2010
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "4f40ea0248653d4ffb6ef4857cd23f0f713d8c69",
+            "title": "A Massively Parallel Coprocessor for Convolutional Neural Networks",
+            "venue": "2009 20th IEEE International Conference on Application-specific Systems, Architectures and Processors",
+            "year": 2009
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "c77a7f135c2f703a2d27f8ffb05fbedab797882f",
+            "title": "The WaveScalar architecture",
+            "venue": "TOCS",
+            "year": 2007
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "246174d13e20abd8626e4a25933605cb9974cebe",
+            "title": "Scaling to the end of silicon with EDGE architectures",
+            "venue": "Computer",
+            "year": 2004
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "a11bfb1db5bd877f5e32a7f23f64b0a68f8b2c9b",
+            "title": "ADRES: An Architecture with Tightly Coupled VLIW Processor and Coarse-Grained Reconfigurable Matrix",
+            "venue": "FPL",
+            "year": 2003
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "f8356d496cded8b8eb8e4f90cfd33f4d8411df6c",
+            "title": "PipeRench: A virtualized programmable datapath in 0.18 micron technology",
+            "venue": "Proceedings of the IEEE 2002 Custom Integrated Circuits Conference (Cat. No.02CH37285)",
+            "year": 2002
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "bd2be2e142e6d9db27b4d65c321f9af1490601c0",
+            "title": "Garp: a MIPS processor with a reconfigurable coprocessor",
+            "venue": "Proceedings. The 5th Annual IEEE Symposium on Field-Programmable Custom Computing Machines Cat. No.97TB100186)",
+            "year": 1997
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "e4bfbc9252fd331907aa4dc3759f66b40ad57ee1",
+            "title": "MATRIX: a reconfigurable computing architecture with configurable instruction distribution and deployable resources",
+            "venue": "1996 Proceedings IEEE Symposium on FPGAs for Custom Computing Machines",
+            "year": 1996
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "3aa4c691289f56f9af6cf543633cfb3917274281",
+            "title": "Handwritten digit recognition: applications of neural network chips and automatic learning",
+            "venue": "IEEE Communications Magazine",
+            "year": 1989
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning",
+            "venue": "Int. J. Semantic Comput.",
+            "year": 2016
+        }
+    }
+]
