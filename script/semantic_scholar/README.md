@@ -1,5 +1,6 @@
 # Seamantic scholar integration
 
+
 ## 새로운 논문 정보 가져오기 
 
 ```bash
@@ -28,7 +29,7 @@ python get_citation_info.py
 python get_reference_info.py
 ```
 
-```
+```txt
 usage: get_reference_info.py [-h] [--reference_info_dir REFERENCE_INFO_DIR] [--paper_dir PAPER_DIR] [--mode {missing,all}]
 
 Find missing reference JSON files and fetch references.
@@ -44,17 +45,7 @@ options:
 
 
 
-
-
-
-
-
-
 ## 논문 리뷰 생성하기 
-
-
-
-
 
 
 
