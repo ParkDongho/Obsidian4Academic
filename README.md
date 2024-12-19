@@ -1,4 +1,3 @@
-
 # Obsidian4Academic
 
 obsidian template for academic research
@@ -12,6 +11,7 @@ This project is a template for academic research using obsidian. This project is
 
 - semantic scholar integration
   - graph representation
+  - paper recommendation
   - citation list
   - citation count
 - llm integration
