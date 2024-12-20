@@ -65,8 +65,8 @@ def split_text_by_length_into_n_parts(text, n):
 def main():
     client = openai.OpenAI()
     parser = argparse.ArgumentParser(description="Translate and process text files.")
-    parser.add_argument("--read_file_path", required=True, help="Path to the input file directory")
-    parser.add_argument("--write_file_path", required=True, help="Path to the output file directory")
+    parser.add_argument("--read_file_path", required=True, help="Path to the input file")
+    parser.add_argument("--write_file_path", required=True, help="Path to the output file")
     parser.add_argument("--re_translate_threshold", type=int, default=100, help="Minimum length of translated text to trigger re-translation")
 
     args = parser.parse_args()
