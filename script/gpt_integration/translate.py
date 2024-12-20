@@ -10,9 +10,7 @@ def translate(text, client):
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=[
-            {"role": "user", "content": "영문 논문을 한국어로 번역."},
-            {"role": "user", "content": "제목과 부제목은 영문을 유지"},
-            {"role": "user", "content": "전문용어는 원문을 최대한 유지"},
+            {"role": "user", "content": "영문 논문을 한국어로 번역.\n- 제목과 부제목은 영문을 유지\n- 전문용어는 원문을 최대한 유지\n- 입력 및 출력 포멧은 마크다운 임"},
             {"role": "user", "content": text}
         ]
     )

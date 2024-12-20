@@ -19,6 +19,12 @@ This script is used to crawl academic paper from ieeexplore, acm digital library
     - 현재 지원하는 사이트: **ieeexplore**
     - 지원 예정 사이트 : acm digital library, arxiv
 - `1_paper_archive/.original/` 디렉토리에 논문 텍스트를 `markdown` 파일로 저장함 
+- 인용문을 변환
+    - 크롤링시 논문의 인용문의 doi를 추출하여 저장
+    - doi를 semantic scholar key로 변환
+    - 가져온 논문 리스트에서 검색하여 doi를 찾아내고, 만약 존재하지 않는다면 semantic scholar api를 활용하여 key를 얻음
+    
+
 
 
 
