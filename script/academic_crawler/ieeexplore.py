@@ -4,6 +4,75 @@ from bs4 import BeautifulSoup
 input_html_path = 'paper.html'
 output_md_path = 'output.md'
 
+from bs4 import Tag, NavigableString
+
+def parsePaper(input):
+    sections = []
+    for section in input:
+        single_section = parseSection(section)
+        sections = sections + single_section
+    return sections
+
+
+def parseSection(input):
+
+    single_section = []
+    subsec_list = []
+    heading_level = None
+    section_title = ""
+    section_content = ""
+
+    for paragraph in input.contents:
+        # Tag인지 NavigableString인지 확인
+        if isinstance(paragraph, NavigableString):
+            continue
+
+        # subsection 처리
+        if 'section_2' in paragraph.get('class', "div"):
+            subsec_list = subsec_list + parseSection(paragraph)
+
+        else:
+            if (paragraph.name in ["h3", "h4", "h5", "h6"]) or ('header' in paragraph.get('class', "div")):
+                for level in range(2, 7):
+                    heading_tag = input.find(f'h{level}')
+                    if heading_tag:
+                        heading_level = level
+                        section_title = heading_tag.text.strip()
+                        break
+
+            # 본문 처리
+            elif paragraph.name == "p":
+                # Replace inline and display formulas with Markdown-friendly syntax
+                for math in paragraph.find_all('inline-formula'):
+                    latex_code = math.find('tex-math').text if math.find('tex-math') else ""
+                    math.replace_with(f"${latex_code}$")
+
+                # link 처리
+
+                paragraph_text = ' '.join(paragraph.stripped_strings)
+                section_content += paragraph_text + "\n\n"
+
+            elif paragraph.name == "disp-formula":
+                # 찾고자 하는 <span> 태그와 그 내부의 텍스트를 추출
+                span_tag = paragraph.find('span', class_="tex tex2jax_ignore")
+                if span_tag and span_tag.text:
+                    latex_code = span_tag.text.strip()  # 텍스트를 가져와서 공백 제거
+                    section_content += f"$$\n{latex_code}\n$$\n\n"
+
+            # Figure 처리
+            elif any(cls in paragraph.get('class', []) for cls in ["figure", "figure-full"]):
+                print("figure")
+
+            # Table 처리
+
+
+            else:
+                print("\n\nUnhandled Tag:", paragraph)
+
+        single_section = [(heading_level, section_title, section_content)] + subsec_list
+
+    return single_section
+
 # Function to extract content and convert to Markdown
 def html_to_markdown(html_path, markdown_path):
     with open(html_path, 'r', encoding='utf-8') as file:
@@ -22,70 +91,15 @@ def html_to_markdown(html_path, markdown_path):
     authors = [tag['content'] for tag in soup.find_all('meta', {'name': 'parsely-author'})]
 
     # Extract sections and process paragraphs
-    sections = []
-    for section_class in ['section', 'section_2']:
-        for section in soup.find_all('div', class_=section_class):
-            # Handle headings from h2 to h6
-            heading = None
-            for level in range(2, 7):
-                heading_tag = section.find(f'h{level}')
-                if heading_tag:
-                    heading = (level, heading_tag.text.strip())
-                    break
-
-            section_title = heading[1] if heading else "Untitled Section"
-            section_content = ""
-
-            # Process paragraphs and nested content
-            for paragraph in section.find_all('p'):
-                # Replace inline and display formulas with Markdown-friendly syntax
-                for math in paragraph.find_all('inline-formula'):
-                    latex_code = math.find('tex-math').text if math.find('tex-math') else ""
-                    math.replace_with(f"${latex_code}$")
-
-                for math in paragraph.find_all('display-formula'):
-                    latex_code = math.find('tex-math').text if math.find('tex-math') else ""
-                    math.replace_with(f"\n$$\n{latex_code}\n$$\n")
-
-                # Add paragraph content with spaces between elements
-                paragraph_text = ' '.join(paragraph.stripped_strings)
-                section_content += paragraph_text + "\n\n"
-
-            # Process images
-            for img in section.find_all('img'):
-                img_src = img.get('src', '')
-                img_alt = img.get('alt', 'Image')
-                section_content += f"![{img_alt}]({img_src})\n\n"
-
-            # Process nested subsections
-            for subsection in section.find_all('div', recursive=False):
-                subsection_heading = None
-                for level in range(3, 7):
-                    heading_tag = subsection.find(f'h{level}')
-                    if heading_tag:
-                        subsection_heading = (level, heading_tag.text.strip())
-                        break
-
-                if subsection_heading:
-                    subsection_content = ""
-                    for paragraph in subsection.find_all('p'):
-                        paragraph_text = ' '.join(paragraph.stripped_strings)
-                        subsection_content += paragraph_text + "\n\n"
-
-                    for img in subsection.find_all('img'):
-                        img_src = img.get('src', '')
-                        img_alt = img.get('alt', 'Image')
-                        subsection_content += f"![{img_alt}]({img_src})\n\n"
-
-                    sections.append((subsection_heading[0], subsection_heading[1], subsection_content))
-
-            sections.append((heading[0] if heading else 2, section_title, section_content))
+    tmp = soup.find_all('div', class_=['section'])
+    sections = parsePaper(tmp)
 
     # Convert to Markdown
     markdown_content = f"# {title}\n\n"
     markdown_content += f"## Abstract\n\n{abstract}\n\n"
     if authors:
         markdown_content += f"## Authors\n\n" + ", ".join(authors) + "\n\n"
+
     for heading_level, section_title, section_content in sections:
         markdown_content += f"{'#' * heading_level} {section_title}\n\n{section_content}\n\n"
 
