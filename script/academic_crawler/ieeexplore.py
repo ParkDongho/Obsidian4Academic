@@ -1,9 +1,10 @@
 from bs4 import BeautifulSoup
 
 # Load the HTML file
-input_html_path = 'paper.html'
-output_md_path = 'output.md'
-ieee_paper_id = 1
+input_html_path = 'test/paper.html'
+output_md_path = 'test/output.md'
+ieee_paper_id = 8686550
+fig_table_data = []
 
 from bs4 import Tag, NavigableString
 
@@ -26,6 +27,8 @@ def parseSection(input):
     for paragraph in input.contents:
         # Tag인지 NavigableString인지 확인
         if isinstance(paragraph, NavigableString):
+            if (paragraph.strip() != ""):
+                print(f"Invalid NavigableString!: {paragraph}")
             continue
 
         # subsection 처리
@@ -57,6 +60,7 @@ def parseSection(input):
                 for math in paragraph.find_all('inline-formula'):
                     latex_code = math.find('script', {'type': 'math/tex'}).text
                     math.replace_with(f"${latex_code}$")
+
 
                 for math in paragraph.find_all('disp-formula'):
                     span_tag = math.find('span', class_="tex tex2jax_ignore")
@@ -102,7 +106,7 @@ def parseSection(input):
 
 
             # Figure 생성
-            elif any(cls in paragraph.get('class', []) for cls in ["figure", "figure-full"]):
+            elif any(cls in paragraph.get('class', []) for cls in ["figure", "figure-full", "table"]):
                 # 이미지와 캡션 파싱
                 image_wrap = paragraph.find('div', class_='img-wrap')
                 fig_caption = paragraph.find('div', class_='figcaption')
@@ -113,26 +117,29 @@ def parseSection(input):
                     img_tag = link_tag.find('img') if link_tag else None
                     image_href = link_tag['href'] if link_tag else ''
                     alt_text = img_tag.get('alt', 'Image') if img_tag else ''
-                    data_fig_id = link_tag.get('data-fig-id') if img_tag else ''
+                    data_fig_id = paragraph.get('id') if img_tag else ''
 
                     # 캡션 추출
                     caption_title = fig_caption.find('b', class_='title').get_text(strip=True) if fig_caption.find('b',
                                                                                                                    class_='title') else ''
                     caption_text = fig_caption.find('p').get_text(strip=True) if fig_caption.find('p') else ''
 
+                    img_file_name = f"ieee_{ieee_paper_id}_{data_fig_id}.gif"
+
                     # 마크다운 형식으로 변환
-                    markdown_output = f"![{alt_text}](ieee_{ieee_paper_id}_{data_fig_id}.gif)\n\n**{caption_title}** {caption_text}"
+                    markdown_output = f"![{alt_text}]({img_file_name})\n\n**{caption_title}** {caption_text}"
 
                     # 섹션 내용에 추가
                     section_content += f"\n{markdown_output}\n"
+                    fig_table_data.append({
+                        "image_href": f"https://ieeexplore.ieee.org/{image_href}",
+                        "img_file_name": img_file_name,
+                        "data_fig_id": data_fig_id
+                    })
+                    print(f"Figure: {caption_title}")
 
                 else:
                     section_content += "\nFigure could not be parsed.\n"
-
-
-            # Table 생성
-            elif any(cls in paragraph.get('class', []) for cls in ["table", "table-full"]):
-                print("table")
 
 
             else:
@@ -178,6 +185,7 @@ def html_to_markdown(html_path, markdown_path):
         md_file.write(markdown_content)
 
     print(f"Markdown successfully saved to {markdown_path}")
+    print(fig_table_data)
 
 # Execute the function
 html_to_markdown(input_html_path, output_md_path)

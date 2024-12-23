@@ -29,11 +29,11 @@ Binary multiplication can be broken down into a summation of single bit multipli
 We will categorize these zero bits as either statically or dynamically ineffectual. Statically ineffectual bits are those that can be determined to be ineffectual a priori . They result from using a data format with more precision than is necessary. In this case, 1’s may also be statically ineffectual. Hardware typically uses fixed bit widths for generality resulting in such ineffectual bits. In contrast, dynamically ineffectual bits are those that cannot be known in advance.
 
 
-![Figure 1: - Sources of ineffectual computation with conventional positional representation and fixed-length hardware precision.](ieee_1_fig1.gif)
+![Figure 1: - Sources of ineffectual computation with conventional positional representation and fixed-length hardware precision.](ieee_8686550_fig1.gif)
 
 **Figure 1:** Sources of ineffectual computation with conventional positional representation and fixed-length hardware precision.
 
-![Table I- Average Fraction of Non-Zero Bits Per Activation For Two Fixed-Length Representations: 16-Bit Fixed-Point, and 8-Bit Quantized. All: Over All Activations. Nz: Over Non-Zero Activations Only.](ieee_1_None.gif)
+![Table I- Average Fraction of Non-Zero Bits Per Activation For Two Fixed-Length Representations: 16-Bit Fixed-Point, and 8-Bit Quantized. All: Over All Activations. Nz: Over Non-Zero Activations Only.](ieee_8686550_table1.gif)
 
 **Table I** 
 
@@ -51,7 +51,7 @@ The rest of this section motivates Pragmatic by: 1) measuring the fraction of no
 16-bit fixed-point is commonly used for DNN hardware implementations [\[5](ref5) , [6\]](ref6) . Recent work has shown that fewer bits are necessary for CNNs [\[17\]](ref17) and how to exploit this reduced precision requirements to save bandwidth [\[16\]](ref16) and improve performance [\[18\]](ref18) . Recently, it has also been shown that 8 bits of precision are sufficient when linear quantization is used for many CNNs [\[1](ref1) , [29\]](ref29) . These techniques exploit statically ineffectual bits.
 
 
-![Figure 2: - Average distribution of activations for the networks studied in 16 bit fixed-point (14 integer and 2 fractional bits). Center bin is just zero valued activations.](ieee_1_fig2.gif)
+![Figure 2: - Average distribution of activations for the networks studied in 16 bit fixed-point (14 integer and 2 fractional bits). Center bin is just zero valued activations.](ieee_8686550_fig2.gif)
 
 **Figure 2:** Average distribution of activations for the networks studied in 16 bit fixed-point (14 integer and 2 fractional bits). Center bin is just zero valued activations.
 
@@ -65,7 +65,7 @@ In contrast to the techniques discussed, this work targets both statically and d
 These results suggest that a significant number of ineffectual terms are processed with conventional fixed-length hardware. Stripes [18 tackles the statically ineffectual bits by computing arbitrary length fixed-point activations serially for improved performance. Pragmatic ’ s goal is to exploit both static and dynamic zero bits. As the next section will show, Pragmatic has the potential to greatly improve performance even when compared to Stripes .
 
 
-![Figure 3: - Convolutional layer computational demands with a 16-bit fixed-point baseline representation. Lower is better.](ieee_1_fig3.gif)
+![Figure 3: - Convolutional layer computational demands with a 16-bit fixed-point baseline representation. Lower is better.](ieee_8686550_fig3.gif)
 
 **Figure 3:** Convolutional layer computational demands with a 16-bit fixed-point baseline representation. Lower is better.
 
@@ -117,7 +117,7 @@ This work presents Pragmatic as a modification of the DaDian-Nao accelerator. Ac
 A convolutional layer processes and produces activation arrays, that is 3D arrays of real numbers. The layer applies N n 3D filters in a sliding window fashion using a constant stride S to produce an output 3D array. The input array contains $N_{X} \times N_{y} \times N_{i}$ activations . Each of the N n filters, contains $K_{X} \times K_{y} \times N_{i}$ weights which are also real numbers. The output activation array dimensions are $O_{X} \times O_{y} \times N_{n}$ , that is its depth equals the filter count. The layer computes the inner product of a filter and a window , a filter-sized, or $K_{x} \times K_{y} \times N_{i}$ sub-array of the input activation array. The inner product is then passed through an activation function , such as ReLU, to produce an output activation. If a ( y, x, i ) and o ( y, x, i ) are respectively input and output activations, $w^{n}$ ( x, y, i ) are the weights of filter n and f is the activation function. The output activation at position ( $x\prime,\ y\prime$ , n ) is given by:
 
 
-![Figure 4: - a) Bit-parallel unit. b) Bit-serial unit with equivalent throughput (Stripes [19]). c) Pragmatic unit with equivalent throughput where only essential information is processed.](ieee_1_fig4.gif)
+![Figure 4: - a) Bit-parallel unit. b) Bit-serial unit with equivalent throughput (Stripes [19]). c) Pragmatic unit with equivalent throughput where only essential information is processed.](ieee_8686550_fig4.gif)
 
 **Figure 4:** a) Bit-parallel unit. b) Bit-serial unit with equivalent throughput (Stripes[19]). c)Pragmaticunit with equivalent throughput where only essential information is processed.
 
@@ -158,7 +158,7 @@ This section presents the Pragmatic architecture. [Section 5.1](sec5a) describes
 PRA ’ s goal is to process only the essential bits of the input activations. To do so PRA a) converts, on-the-fly, the input activation representation into one that contains only the essential bits, and b) processes one essential bit per activation and a fu1116-bit weight per cycle. Since PRA processes activation bits serially, it may take up to 16 cycles to produce a product of an activation and a weight. To always match or exceed the performance of the bit-parallel units of DaDN , PRA processes more activations concurrently exploiting the abundant parallelism of the convolutional layers. The remaining of this section describes in turn: 1) an appropriate activation representation, 2) the way PRA calculates terms, 3) how multiple terms are processed concurrently to maintain performance on par with DaDN in the worst case, and 4) how PRA ’s units are supplied with the necessary activations from NM.
 
 
-![Figure 5: - a) DaDianNao Tile. b) Pragmatic Tile.](ieee_1_fig5.gif)
+![Figure 5: - a) DaDianNao Tile. b) Pragmatic Tile.](ieee_8686550_fig5.gif)
 
 **Figure 5:** a) DaDianNao Tile. b) Pragmatic Tile.
 
@@ -192,7 +192,7 @@ Fortunately, it is possible to avoid increasing the capacity and the width of th
 As the example illustrates, this approach allows each weight to be combined with one activation per window whereas in DaDN each weight is combined with one activation only. In total, 256 essential activation bits are processed per cycle and given that there are 256 weights and 16 windows, PRA processes 256x 16=4 K activation bit and weight pairs, or terms per cycle producing 256 partial output activations, 16 per filter, or 16 partial output activation bricks per cycle.
 
 
-![Figure 6: - Pragmatic Inner Product Unit.](ieee_1_fig6.gif)
+![Figure 6: - Pragmatic Inner Product Unit.](ieee_8686550_fig6.gif)
 
 **Figure 6:** Pragmatic Inner Product Unit.
 
@@ -236,11 +236,11 @@ Once the 16 activation bricks have been collected, 256 oneffset generators opera
 Oneffset generation converts a single bit to 5 bits: a 4 bit offset and a bit to indicate the last offset. Doing this at the dispatcher requires a 5 $\times$ increase in broadcast bandwidth and NBin capacity to match the worst case activation capacity. Instead, this work opts for a configuration which generates oneffsets at each tile, between NBin and the PIP array, to maintain the baseline NBin capacity. Broadcast bandwidth is still increased to support the higher compute throughput. This is mitigated by transmitting activations serially in reduced precision, as in Stripes [\[18\]](ref18) .
 
 
-![Figure 7: - 2-stage shifting. a) Modified PIP. b) Example: Processing three 9-bit weight and activation pairs with L = 2. The oneffset generator reads the activation values, and produces a set of three oneffests per cycle. Each cycle, the control logic, which is shared and amortized across the entire column of PIPs, compares the oneffsets being processed, (1, 0,4) in the first cycle of our example and picks the lowest, 0, indicated by a circle. This minimum oneffset controls the second stage shifter. The control subtracts this offset from all three oneffsets. The difference per oneffset, as long as it is less than $2^{L}$ controls the corresponding first level shifter. In the first cycle, the two shifters at the top are fed with values 1-0=1 and 0-0=0, while the shifter at the bottom is stalled given that it is not able to handle a shift by 4-0=4. On cycle 2, the oneffsets are (6,7,4) and 4 is now the minimum, which controls the 2nd stage shifter, while (1, 3, 0) control the first-level shifters. On cycle 3, only the first and the third activations still have oneffsets to process. The computation finishes in cycle 4 when the last oneffset of the third activation controls the shifters.](ieee_1_fig7.gif)
+![Figure 7: - 2-stage shifting. a) Modified PIP. b) Example: Processing three 9-bit weight and activation pairs with L = 2. The oneffset generator reads the activation values, and produces a set of three oneffests per cycle. Each cycle, the control logic, which is shared and amortized across the entire column of PIPs, compares the oneffsets being processed, (1, 0,4) in the first cycle of our example and picks the lowest, 0, indicated by a circle. This minimum oneffset controls the second stage shifter. The control subtracts this offset from all three oneffsets. The difference per oneffset, as long as it is less than $2^{L}$ controls the corresponding first level shifter. In the first cycle, the two shifters at the top are fed with values 1-0=1 and 0-0=0, while the shifter at the bottom is stalled given that it is not able to handle a shift by 4-0=4. On cycle 2, the oneffsets are (6,7,4) and 4 is now the minimum, which controls the 2nd stage shifter, while (1, 3, 0) control the first-level shifters. On cycle 3, only the first and the third activations still have oneffsets to process. The computation finishes in cycle 4 when the last oneffset of the third activation controls the shifters.](ieee_8686550_fig7.gif)
 
 **Figure 7:** 2-stage shifting. a) Modified PIP. b) Example: Processing three 9-bit weight and activation pairs with L = 2. The oneffset generator reads the activation values, and produces a set of three oneffests per cycle. Each cycle, the control logic, which is shared and amortized across the entire column of PIPs, compares the oneffsets being processed, (1, 0,4) in the first cycle of our example and picks the lowest, 0, indicated by a circle. This minimum oneffset controls the second stage shifter. The control subtracts this offset from all three oneffsets. The difference per oneffset, as long as it is less than2Lcontrols the corresponding first level shifter. In the first cycle, the two shifters at the top are fed with values 1-0=1 and 0-0=0, while the shifter at the bottom is stalled given that it is not able to handle a shift by 4-0=4. On cycle 2, the oneffsets are (6,7,4) and 4 is now the minimum, which controls the 2nd stage shifter, while (1, 3, 0) control the first-level shifters. On cycle 3, only the first and the third activations still have oneffsets to process. The computation finishes in cycle 4 when the last oneffset of the third activation controls the shifters.
 
-![Figure 8: - Per-column synchronization example: one extra weight register and lx2 PIP array capable of processing two windows in parallel. The two numbers per brick show: the first from the top is the brick’s index, (0,1, 2) and $(0^{\prime}, 1^{\prime}, 2^{\prime})$ for the bricks of the first and second window. The second is the maximum count of oneffsets in its activations, (2, 4, 4) and (5, 2, 2) respectively. The numbers in the registers indicate the index of the corresponding bricks, i.e., a weight register containing a K stores the weights corresponding to activation bricks with indexes K and K’. In cycles 3 to 8, thicker lines indicate registers being loaded or wires being used.](ieee_1_fig8.gif)
+![Figure 8: - Per-column synchronization example: one extra weight register and lx2 PIP array capable of processing two windows in parallel. The two numbers per brick show: the first from the top is the brick’s index, (0,1, 2) and $(0^{\prime}, 1^{\prime}, 2^{\prime})$ for the bricks of the first and second window. The second is the maximum count of oneffsets in its activations, (2, 4, 4) and (5, 2, 2) respectively. The numbers in the registers indicate the index of the corresponding bricks, i.e., a weight register containing a K stores the weights corresponding to activation bricks with indexes K and K’. In cycles 3 to 8, thicker lines indicate registers being loaded or wires being used.](ieee_8686550_fig8.gif)
 
 **Figure 8:** Per-column synchronization example: one extra weight register and lx2 PIP array capable of processing two windows in parallel. The two numbers per brick show: the first from the top is the brick’s index, (0,1, 2) and(0′,1′,2′)for the bricks of the first and second window. The second is the maximum count of oneffsets in its activations, (2, 4, 4) and (5, 2, 2) respectively. The numbers in the registers indicate the index of the corresponding bricks, i.e., a weight register containing a K stores the weights corresponding to activation bricks with indexes K and K’. In cycles 3 to 8, thicker lines indicate registers being loaded or wires being used.
 
@@ -284,7 +284,7 @@ This encoding will never produce more oneffsets compared to the baseline encodin
 PRA enables an additional dimension upon which hardware and software can attempt to further boost performance and energy efficiency, that of controlling the essential activation value content. This work investigates a software guided approach where the precision requirements of each layer are used to zero out the statically ineffectual bits at the output of each layer. Using the profiling method of Judd et al ., [\[17\]](ref17) , software communicates the precisions needed by each layer as meta-data. The hardware trims the output activations before writing them to NM using AND gates and precision derived bit masks.
 
 
-![Table II- : Per Layer Activation Precision Profiles.](ieee_1_None.gif)
+![Table II- : Per Layer Activation Precision Profiles.](ieee_8686550_table2.gif)
 
 **Table II** 
 
@@ -310,11 +310,11 @@ All systems were modelled using the same methodology for consistency. A custom c
 This section evaluates the single-stage shifting PRA configuration of [Sections 5.1](sec5a) and [5.2](sec5b) , and the 2-stage shifting variants of [Section 5.4](sec5d) . [Section 6.2.1](sec6b1) reports performance while [Section 6.2.2](sec6b2) reports area and power. In this section, All PRA systems use pallet synchronization.
 
 
-![Figure 9: - 2-stage shifting and per-pallet synchronization: Pragmatic performance relative to DaDianNao.](ieee_1_fig9.gif)
+![Figure 9: - 2-stage shifting and per-pallet synchronization: Pragmatic performance relative to DaDianNao.](ieee_8686550_fig9.gif)
 
 **Figure 9:** 2-stage shifting and per-pallet synchronization:Pragmaticperformance relative toDaDianNao.
 
-![Table III- : Area [Mm2] and Power [W] For the Unit and the Whole Chip. Pallet Synchronization.](ieee_1_None.gif)
+![Table III- : Area [Mm2] and Power [W] For the Unit and the Whole Chip. Pallet Synchronization.](ieee_8686550_table3.gif)
 
 **Table III** 
 
@@ -334,15 +334,15 @@ PRA single improves performance by 2.59 $\times$ on average over DaDN compared t
 [Table 3](table3) shows area and power for DaDN and Pragmatic . Two measurements are reported: 1) for the unit excluding the SB, NBin and NBout memory blocks, and 2) for the whole chip comprising 16 units and all memory blocks. Since SB and NM dominate chip area, the compute area overheads are relatively small. PRA 2b is the most efficient configuration with an average speedup of 2.59 $\times$ for an area and power cost of 1.68 $\times$ and 2.50 $\times$ , respectively, over DaDN . Accordingly, the rest of this evaluation restricts attention to this configuration.
 
 
-![Figure 10: - Column Synchronization: Relative performance of PRA2b as a function of the SB registers used.](ieee_1_fig10.gif)
+![Figure 10: - Column Synchronization: Relative performance of PRA2b as a function of the SB registers used.](ieee_8686550_fig10.gif)
 
 **Figure 10:** Column Synchronization: Relative performance of PRA2bas a function of the SB registers used.
 
-![Table IV- : Area [Mm2] and Power [W] For the Unit and the Whole Chip For Column Synchronization and Pra2B.](ieee_1_None.gif)
+![Table IV- : Area [Mm2] and Power [W] For the Unit and the Whole Chip For Column Synchronization and Pra2B.](ieee_8686550_table4.gif)
 
 **Table IV** 
 
-![Table V- : Pra$_{2b}^{1R}$: Area [$mm^{2}$] and Power [W] Breakdown.](ieee_1_None.gif)
+![Table V- : Pra$_{2b}^{1R}$: Area [$mm^{2}$] and Power [W] Breakdown.](ieee_8686550_table5.gif)
 
 **Table V** 
 
@@ -360,7 +360,7 @@ The offset generators for one tile in this configuration requires 181,950 u $m^{
 [Figure 10](fig10) reports the relative to DaDN performance for PRA 2b with column synchronization and as a function of the number of WSRs as per [Section 5](sec5) .5. Configuration PR $A_{2b}^{xR}$ refers to a configuration using x WSRs. Even PR $A_{2b}^{1R}$ boosts performance to 3.06 $\times$ on average, close to the 3.45 $\times$ that is ideally possible with PR $A_{2b}^{\infty R}$ .
 
 
-![Figure 11: - Relative performance of Pragmatic using Improved Oneffset Encoding for different configurations. Marked: performance not using IOE](ieee_1_fig11.gif)
+![Figure 11: - Relative performance of Pragmatic using Improved Oneffset Encoding for different configurations. Marked: performance not using IOE](ieee_8686550_fig11.gif)
 
 **Figure 11:** Relative performance ofPragmaticusing Improved Oneffset Encoding for different configurations. Marked: performance not using IOE
 
@@ -386,11 +386,11 @@ The offset generators for one tile in this configuration requires 181,950 u $m^{
 [Figure 12](fig12) shows the energy efficiency of various Pragmatic configurations. Energy Efficiency , or simply efficiency for a system NEW relative to BASE is defined as the ratio E BASE / E NEW of the energy required by BASE to compute all of the convolution layers over that of NEW. The power overhead of PRA single ( PRA 4b ) is more than the speedup resulting in a circuit that is 23% less efficient than DaDN. PR A 2b reduces that power overhead while maintaining performance yielding an efficiency of 3%. PR $A_{2b}^{1R}$ boosts performance with little hardware cost, increasing efficiency to 21%.
 
 
-![Figure 12: - Relative energy efficiency](ieee_1_fig12.gif)
+![Figure 12: - Relative energy efficiency](ieee_8686550_fig12.gif)
 
 **Figure 12:** Relative energy efficiency
 
-![Table VI- : Tile Configuration: Performance Relative To Dadn](ieee_1_None.gif)
+![Table VI- : Tile Configuration: Performance Relative To Dadn](ieee_8686550_table6.gif)
 
 **Table VI** 
 
@@ -410,7 +410,7 @@ Finally, using IOE increases efficiency to 1.70 $\times$ over DaDN , an improvem
 [Table 7](table7) reports performance for DaDN, STR , and PRA configurations using the 8-bit quantized representation used in Tensorflow [\[11\]](ref11) , [\[29\]](ref29) . This quantization uses 8 bits to specify arbitrary minimum and maximum limits per layer for the activations and the weights separately, and maps the 256 available 8-bit values linearly into the resulting interval.
 
 
-![Table VII- : Area [$mm^{2}$], Power [W], Speedup and Efficiency For 8-Bit Variants the Three Designs.](ieee_1_None.gif)
+![Table VII- : Area [$mm^{2}$], Power [W], Speedup and Efficiency For 8-Bit Variants the Three Designs.](ieee_8686550_table7.gif)
 
 **Table VII** 
 
