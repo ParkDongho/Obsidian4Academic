@@ -4,6 +4,7 @@ import os
 import json
 import requests
 import argparse
+import re
 
 from orca.punctuation_settings import section
 from selenium import webdriver
@@ -13,6 +14,15 @@ import time
 fig_table_data = []
 
 from bs4 import Tag, NavigableString
+
+
+def convert_to_markdown_link(title):
+    # 1. 제목에서 소문자로 변환
+    # 2. 공백을 하이픈으로 변환
+    # 3. 특수 문자를 제거 (단, 숫자와 하이픈은 유지)
+    link = re.sub(r'[^\w\s-]', '', title)  # 특수문자 제거
+    link = link.lower().replace(' ', '-')  # 소문자로 변환 및 공백 -> 하이픈
+    return f"#{link}"
 
 def parsePaper(input, ieee_paper_info):
     sections = []
@@ -91,7 +101,10 @@ def parseSection(input, ieee_paper_info):
 
                     # 본문 내 이미지 관련 참조 처리
                     elif link.attrs['ref-type'] == "fig":
-                        link.replace_with(f"[{link.text}]({link.attrs['anchor']})")
+                        anchor = link.attrs['anchor']
+                        img_name = next((img for img in ieee_paper_info["img_info"] if img["data_fig_id"] == anchor), None)
+                        img_path = f"{ieee_paper_info['relative_img_dir']}/{img_name['img_file_name']}" if img_name else "none"
+                        link.replace_with(f"[{link.text}]({img_path})")
 
                     # 본문 내 표 관련 참조 처리
                     elif link.attrs['ref-type'] == "table":
@@ -99,7 +112,10 @@ def parseSection(input, ieee_paper_info):
 
                     # 본문 내 섹션 관련 참조 처리
                     elif link.attrs['ref-type'] == "sec":
-                        link.replace_with(f"[{link.text}]({link.attrs['anchor']})")
+                        anchor = link.attrs['anchor']
+                        section_link_title = str(next((item[1] for item in ieee_paper_info["section_info"] if item[3] == anchor), None))
+                        section_path = f"{convert_to_markdown_link(section_link_title)}" if section_link_title else "none"
+                        link.replace_with(f"[{link.text}]({section_path})")
 
                     # 본문 내 수식 관련 참조 처리
                     elif link.attrs['ref-type'] == "fn":
@@ -316,6 +332,7 @@ def main():
     ieee_paper_info = extract_references(driver, ieee_paper_info)
 
     # step 2 : get markdown data
+    ieee_paper_info = html_to_markdown(driver, ieee_paper_info)
     ieee_paper_info = html_to_markdown(driver, ieee_paper_info)
 
     # step 3 : download images
