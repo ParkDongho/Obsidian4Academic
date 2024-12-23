@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 # Load the HTML file
 input_html_path = 'paper.html'
 output_md_path = 'output.md'
+ieee_paper_id = 1
 
 from bs4 import Tag, NavigableString
 
@@ -75,23 +76,29 @@ def parseSection(input):
                         if link.text[-1] == "]":
                             link_text = link_text.replace("]", "\]")
                         link.replace_with(f"[{link_text}]({link.attrs['anchor']})")
+
                     # 본문 내 이미지 관련 참조 처리
                     elif link.attrs['ref-type'] == "fig":
                         link.replace_with(f"[{link.text}]({link.attrs['anchor']})")
+
                     # 본문 내 표 관련 참조 처리
                     elif link.attrs['ref-type'] == "table":
                         link.replace_with(f"[{link.text}]({link.attrs['anchor']})")
+
                     # 본문 내 섹션 관련 참조 처리
                     elif link.attrs['ref-type'] == "sec":
                         link.replace_with(f"[{link.text}]({link.attrs['anchor']})")
+
                     # 본문 내 수식 관련 참조 처리
                     elif link.attrs['ref-type'] == "fn":
                         link.replace_with(f"[{link.text}]({link.attrs['anchor']})")
+
                     else:
                         print("Unhandled Link: ", link.text, ", ", link.attrs['ref-type'], ", ", link.attrs['anchor'])
 
                 paragraph_text = ' '.join(paragraph.stripped_strings)
                 section_content += paragraph_text + "\n\n"
+
 
 
             # Figure 생성
@@ -106,6 +113,7 @@ def parseSection(input):
                     img_tag = link_tag.find('img') if link_tag else None
                     image_href = link_tag['href'] if link_tag else ''
                     alt_text = img_tag.get('alt', 'Image') if img_tag else ''
+                    data_fig_id = link_tag.get('data-fig-id') if img_tag else ''
 
                     # 캡션 추출
                     caption_title = fig_caption.find('b', class_='title').get_text(strip=True) if fig_caption.find('b',
@@ -113,7 +121,7 @@ def parseSection(input):
                     caption_text = fig_caption.find('p').get_text(strip=True) if fig_caption.find('p') else ''
 
                     # 마크다운 형식으로 변환
-                    markdown_output = f"![{alt_text}]({image_href})\n\n**{caption_title}** {caption_text}"
+                    markdown_output = f"![{alt_text}](ieee_{ieee_paper_id}_{data_fig_id}.gif)\n\n**{caption_title}** {caption_text}"
 
                     # 섹션 내용에 추가
                     section_content += f"\n{markdown_output}\n"
