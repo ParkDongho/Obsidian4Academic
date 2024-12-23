@@ -1,28 +1,35 @@
 from bs4 import BeautifulSoup
+import argparse
+import os
+import json
+import requests
+import argparse
+
+from orca.punctuation_settings import section
+from selenium import webdriver
+import time
 
 # Load the HTML file
-input_html_path = 'test/paper.html'
-output_md_path = 'test/output.md'
-ieee_paper_id = 8686550
 fig_table_data = []
 
 from bs4 import Tag, NavigableString
 
-def parsePaper(input):
+def parsePaper(input, ieee_paper_info):
     sections = []
     for section in input:
-        single_section = parseSection(section)
+        single_section = parseSection(section, ieee_paper_info)
         sections = sections + single_section
     return sections
 
 
-def parseSection(input):
+def parseSection(input, ieee_paper_info):
 
     single_section = []
     subsec_list = []
     heading_level = None
     section_title = ""
     section_content = ""
+    section_id = ""
 
     for paragraph in input.contents:
         # Tag인지 NavigableString인지 확인
@@ -33,7 +40,7 @@ def parseSection(input):
 
         # subsection 처리
         if 'section_2' in paragraph.get('class', "div"):
-            subsec_list = subsec_list + parseSection(paragraph)
+            subsec_list = subsec_list + parseSection(paragraph, ieee_paper_info)
 
         else:
             if (paragraph.name in ["h3", "h4", "h5", "h6"]) or ('header' in paragraph.get('class', "div")):
@@ -42,6 +49,7 @@ def parseSection(input):
                     if heading_tag:
                         heading_level = level
                         section_title = heading_tag.text.strip()
+                        section_id = input.attrs['id']
                         break
 
             elif paragraph.name == "disp-formula":
@@ -120,14 +128,15 @@ def parseSection(input):
                     data_fig_id = paragraph.get('id') if img_tag else ''
 
                     # 캡션 추출
-                    caption_title = fig_caption.find('b', class_='title').get_text(strip=True) if fig_caption.find('b',
-                                                                                                                   class_='title') else ''
+                    caption_title = fig_caption.find('b', class_='title').get_text(strip=True) \
+                        if fig_caption.find('b', class_='title') else ''
                     caption_text = fig_caption.find('p').get_text(strip=True) if fig_caption.find('p') else ''
 
-                    img_file_name = f"ieee_{ieee_paper_id}_{data_fig_id}.gif"
+                    img_file_name = f"ieee_{ieee_paper_info['ieee_paper_id']}_{data_fig_id}.gif"
+                    img_file_path = f"{ieee_paper_info['relative_img_dir']}/{img_file_name}"
 
                     # 마크다운 형식으로 변환
-                    markdown_output = f"![{alt_text}]({img_file_name})\n\n**{caption_title}** {caption_text}"
+                    markdown_output = f"![{alt_text}]({img_file_path})\n\n**{caption_title}** {caption_text}"
 
                     # 섹션 내용에 추가
                     section_content += f"\n{markdown_output}\n"
@@ -136,7 +145,6 @@ def parseSection(input):
                         "img_file_name": img_file_name,
                         "data_fig_id": data_fig_id
                     })
-                    print(f"Figure: {caption_title}")
 
                 else:
                     section_content += "\nFigure could not be parsed.\n"
@@ -146,16 +154,20 @@ def parseSection(input):
                 print("\n\nUnhandled Tag:", paragraph)
 
 
-        single_section = [(heading_level, section_title, section_content)] + subsec_list
+        single_section = [(heading_level, section_title, section_content, section_id)] + subsec_list
 
     return single_section
 
 # Function to extract content and convert to Markdown
-def html_to_markdown(html_path, markdown_path):
-    with open(html_path, 'r', encoding='utf-8') as file:
-        html_content = file.read()
+def html_to_markdown(driver, ieee_paper_info):
+    # with open(html_path, 'r', encoding='utf-8') as file:
+    #     html_content = file.read()
 
-    soup = BeautifulSoup(html_content, 'html.parser')
+    driver.get(f"https://ieeexplore.ieee.org/document/{ieee_paper_info['ieee_paper_id']}")
+
+    time.sleep(5)
+    html = driver.page_source
+    soup = BeautifulSoup(html, 'html.parser')
 
     # Extract title
     title = soup.find('title').text.strip() if soup.find('title') else "No Title"
@@ -168,8 +180,7 @@ def html_to_markdown(html_path, markdown_path):
     authors = [tag['content'] for tag in soup.find_all('meta', {'name': 'parsely-author'})]
 
     # Extract sections and process paragraphs
-    tmp = soup.find_all('div', class_=['section'])
-    sections = parsePaper(tmp)
+    sections = parsePaper(soup.find_all('div', class_=['section']), ieee_paper_info)
 
     # Convert to Markdown
     markdown_content = f"# {title}\n\n"
@@ -177,16 +188,146 @@ def html_to_markdown(html_path, markdown_path):
     if authors:
         markdown_content += f"## Authors\n\n" + ", ".join(authors) + "\n\n"
 
-    for heading_level, section_title, section_content in sections:
+    for heading_level, section_title, section_content, section_id in sections:
         markdown_content += f"{'#' * heading_level} {section_title}\n\n{section_content}\n\n"
 
     # Save as Markdown
-    with open(markdown_path, 'w', encoding='utf-8') as md_file:
+    with open(ieee_paper_info["output_md_path"], 'w', encoding='utf-8') as md_file:
         md_file.write(markdown_content)
 
-    print(f"Markdown successfully saved to {markdown_path}")
-    print(fig_table_data)
+    print(f"Markdown successfully saved to {ieee_paper_info['output_md_path']}")
 
-# Execute the function
-html_to_markdown(input_html_path, output_md_path)
+    ieee_paper_info['img_info'] = fig_table_data
+    ieee_paper_info['section_info'] = sections
+    return ieee_paper_info
 
+
+
+def download_images(driver, ieee_paper_info):
+    """
+    셀레니움과 쿠키를 사용하여 이미지 다운로드 함수
+
+    Args:
+        img_dir (str): 이미지 다운로드 디렉토리 경로
+        driver (webdriver): Selenium WebDriver 인스턴스
+    """
+    # 디렉토리 생성
+    os.makedirs(ieee_paper_info['output_img_dir'], exist_ok=True)
+
+    data = ieee_paper_info["img_info"]
+
+    # Selenium에서 쿠키 가져오기
+    cookies = driver.get_cookies()
+    session = requests.Session()
+
+    # requests 세션에 쿠키 추가
+    for cookie in cookies:
+        session.cookies.set(cookie['name'], cookie['value'])
+
+    # 이미지 다운로드
+    for item in data:
+        image_url = item.get('image_href')
+        file_name = item.get('img_file_name')
+
+        if image_url and file_name:
+            file_path = os.path.join(ieee_paper_info['output_img_dir'], file_name)
+            try:
+                response = session.get(image_url, stream=True)
+                if response.status_code == 200:
+                    with open(file_path, 'wb') as img_file:
+                        for chunk in response.iter_content(1024):
+                            img_file.write(chunk)
+                    print(f"Downloaded: {file_path}")
+                else:
+                    print(f"Failed to download {image_url}, status code: {response.status_code}")
+            except Exception as e:
+                print(f"Error downloading {image_url}: {e}")
+
+
+
+
+def extract_references(driver, ieee_paper_info):
+    """
+    HTML 파일에서 참조와 링크를 추출합니다.
+
+    Args:
+        file_path (str): 로컬 HTML 파일 경로
+
+    Returns:
+        list: 참조 번호, 제목, 링크 정보가 포함된 딕셔너리 리스트
+    """
+
+    driver.get(f"https://ieeexplore.ieee.org/document/{ieee_paper_info['ieee_paper_id']}/references#references")
+
+    time.sleep(5)
+    html = driver.page_source
+    soup = BeautifulSoup(html, 'html.parser')
+
+    # 참조 목록 추출
+    reference_list = []
+    references = soup.select(".reference-container")
+
+    for ref in references:
+        try:
+            # 참조 번호
+            number_element = ref.select_one(".number b")
+            number = number_element.text.strip() if number_element else None
+
+            # 제목
+            title_element = ref.select_one(".col > div:first-child")
+            title = title_element.text.strip() if title_element else None
+
+            # 링크들
+            links = {}
+            link_elements = ref.select(".ref-link a")
+            for link in link_elements:
+                link_text = link.text.strip()
+                href = link.get("href")
+                if link_text and href:
+                    links[link_text] = href
+
+            reference_list.append({
+                "number": number,
+                "title": title,
+                "links": links
+            })
+        except Exception as e:
+            print(f"Error processing reference: {e}")
+
+    ieee_paper_info['reference_info'] = reference_list
+    return ieee_paper_info
+
+def main():
+    # Execute the function
+    ieee_paper_info = {
+        "output_md_path": 'test/output.md',
+        "output_img_dir": "test/img",
+        "relative_img_dir": "img",
+        "paper_info_path": "test/paper_info.json",
+        "ieee_paper_id": 8686550,
+        "reference_info": [],
+        "img_info": [],
+        "section_info": [],
+    }
+
+    driver = webdriver.Chrome()  # 필요에 따라 WebDriver 경로 지정
+
+    # step 1 : get reference data
+    ieee_paper_info = extract_references(driver, ieee_paper_info)
+
+    # step 2 : get markdown data
+    ieee_paper_info = html_to_markdown(driver, ieee_paper_info)
+
+    # step 3 : download images
+    download_images(driver, ieee_paper_info)
+
+    # step 4 :
+
+
+    # step 4 : save markdown file
+
+    # step 5 : save ieee_paper_info as json file
+    with open(ieee_paper_info["paper_info_path"], 'w', encoding='utf-8') as json_file:
+        json.dump(ieee_paper_info, json_file, ensure_ascii=False, indent=4)
+
+main()
