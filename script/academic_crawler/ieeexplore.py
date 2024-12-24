@@ -10,9 +10,6 @@ from orca.punctuation_settings import section
 from selenium import webdriver
 import time
 
-# Load the HTML file
-fig_table_data = []
-
 from bs4 import Tag, NavigableString
 
 
@@ -26,15 +23,19 @@ def convert_to_markdown_link(title):
 
 def parsePaper(input, ieee_paper_info):
     sections = []
+    fig_table_data = []
+
     for section in input:
-        single_section = parseSection(section, ieee_paper_info)
+        single_section, fig_table_tmp= parseSection(section, ieee_paper_info)
         sections = sections + single_section
-    return sections
+        fig_table_data = fig_table_data + fig_table_tmp
+    return (sections, fig_table_data)
 
 
 def parseSection(input, ieee_paper_info):
 
     single_section = []
+    fig_table_data = []
     subsec_list = []
     heading_level = None
     section_title = ""
@@ -50,7 +51,9 @@ def parseSection(input, ieee_paper_info):
 
         # subsection 처리
         if 'section_2' in paragraph.get('class', "div"):
-            subsec_list = subsec_list + parseSection(paragraph, ieee_paper_info)
+            subsec_tmp, fig_table_data_tmp = parseSection(paragraph, ieee_paper_info)
+            subsec_list = subsec_list + subsec_tmp
+            fig_table_data = fig_table_data + fig_table_data_tmp
 
         else:
             if (paragraph.name in ["h3", "h4", "h5", "h6"]) or ('header' in paragraph.get('class', "div")):
@@ -108,7 +111,10 @@ def parseSection(input, ieee_paper_info):
 
                     # 본문 내 표 관련 참조 처리
                     elif link.attrs['ref-type'] == "table":
-                        link.replace_with(f"[{link.text}]({link.attrs['anchor']})")
+                        anchor = link.attrs['anchor']
+                        img_name = next((img for img in ieee_paper_info["img_info"] if img["data_fig_id"] == anchor), None)
+                        img_path = f"{ieee_paper_info['relative_img_dir']}/{img_name['img_file_name']}" if img_name else "none"
+                        link.replace_with(f"[{link.text}]({img_path})")
 
                     # 본문 내 섹션 관련 참조 처리
                     elif link.attrs['ref-type'] == "sec":
@@ -172,7 +178,7 @@ def parseSection(input, ieee_paper_info):
 
         single_section = [(heading_level, section_title, section_content, section_id)] + subsec_list
 
-    return single_section
+    return (single_section, fig_table_data)
 
 # Function to extract content and convert to Markdown
 def html_to_markdown(driver, ieee_paper_info):
@@ -196,7 +202,7 @@ def html_to_markdown(driver, ieee_paper_info):
     authors = [tag['content'] for tag in soup.find_all('meta', {'name': 'parsely-author'})]
 
     # Extract sections and process paragraphs
-    sections = parsePaper(soup.find_all('div', class_=['section']), ieee_paper_info)
+    sections, fig_table_data = parsePaper(soup.find_all('div', class_=['section']), ieee_paper_info)
 
     # Convert to Markdown
     markdown_content = f"# {title}\n\n"

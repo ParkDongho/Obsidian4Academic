@@ -60,9 +60,9 @@ The rest of this section motivates Pragmatic by: 1) measuring the fraction of no
 **Figure 2:** Average distribution of activations for the networks studied in 16 bit fixed-point (14 integer and 2 fractional bits). Center bin is just zero valued activations.
 
 
-[Table 1](table1) reports the non-zero bit content of all activations of modern CNNs for two commonly used representations: 16-bit fixed-point and 8-bit quantized activations [\[29\]](ref29) . [Figure 2](img/ieee_8686550_fig2.gif) shows the distribution of activation values. From these measurements we can infer that the large percentage of zero bits are due to two factors: 1) Activations have a normal distribution of positive values. Most activations are close to zero, relative to the range of the representation, thus their most significant bits are zero. 2) The rectified linear (ReLU) activation function which is used in most modern CNNs converts negative activations to 0, resulting in many zero activations and no negative activations, except in the inputs to the first layer. Weights exhibit the first property, but not the second, and exploiting their bit content is left for future work.
+[Table 1](img/ieee_8686550_table1.gif) reports the non-zero bit content of all activations of modern CNNs for two commonly used representations: 16-bit fixed-point and 8-bit quantized activations [\[29\]](ref29) . [Figure 2](img/ieee_8686550_fig2.gif) shows the distribution of activation values. From these measurements we can infer that the large percentage of zero bits are due to two factors: 1) Activations have a normal distribution of positive values. Most activations are close to zero, relative to the range of the representation, thus their most significant bits are zero. 2) The rectified linear (ReLU) activation function which is used in most modern CNNs converts negative activations to 0, resulting in many zero activations and no negative activations, except in the inputs to the first layer. Weights exhibit the first property, but not the second, and exploiting their bit content is left for future work.
 
-Skipping the computation of zero valued activations is an optimization employed in recently proposed DNN accelerators, both to save power [\[6\]](ref6) , [\[26\]](ref26) and processing time [\[2\]](ref2) , [\[12\]](ref12) , [\[24\]](ref24) . These works exploit the presence of dynamic zero bits only for zero valued or near-zero valued activations or weights [\[24\]](ref24) . [Table 1](table1) also shows the percentage of non-zero bits in the non-zero activations only (NZ). Zero bits still make up over 50% of the non-zero activation values in all networks. Therefore, there is still a significant opportunity to exploit the zero bit content of non-zero values.
+Skipping the computation of zero valued activations is an optimization employed in recently proposed DNN accelerators, both to save power [\[6\]](ref6) , [\[26\]](ref26) and processing time [\[2\]](ref2) , [\[12\]](ref12) , [\[24\]](ref24) . These works exploit the presence of dynamic zero bits only for zero valued or near-zero valued activations or weights [\[24\]](ref24) . [Table 1](img/ieee_8686550_table1.gif) also shows the percentage of non-zero bits in the non-zero activations only (NZ). Zero bits still make up over 50% of the non-zero activation values in all networks. Therefore, there is still a significant opportunity to exploit the zero bit content of non-zero values.
 
 In contrast to the techniques discussed, this work targets both statically and dynamically ineffectual bits in the activations. When considering all activations, the non-zero bit content is at most 13% and 38% for the fixed-point and 8-bit quantized representations respectively.
 
@@ -80,7 +80,7 @@ These results suggest that a significant number of ineffectual terms are process
 
 To estimate PRA’s potential, this section compares the number of terms that would be processed by various compute engines for the convolutional layers of our target CNNs (see [Section 6.1](#61-methodology) ) for the two aforementioned baseline two’s complement representations.
 
-The following compute engines are considered: 1) the baseline DaDN with its 16 -bit fixed-point bit-parallel units [\[5\]](ref5) , 2) ZN, an ideal engine that can skip all zero valued activations, 3) Cnvlutin ( CVN ) a practical design that can skip most zero value activations [\[2\]](ref2) , 4) Stripes ( STR ) a practical design that uses reduced precisions (see [Table 2](table2) ) [\[19\]](ref19) , 5) PRA -fp16 an ideal engine that processes only the essential activation bits in the native 16 -bit fixed-point representation, and 6) PRA -red , an ideal engine that processes only the essential activation bits of the reduced precision formats used in STR .
+The following compute engines are considered: 1) the baseline DaDN with its 16 -bit fixed-point bit-parallel units [\[5\]](ref5) , 2) ZN, an ideal engine that can skip all zero valued activations, 3) Cnvlutin ( CVN ) a practical design that can skip most zero value activations [\[2\]](ref2) , 4) Stripes ( STR ) a practical design that uses reduced precisions (see [Table 2](img/ieee_8686550_table2.gif) ) [\[19\]](ref19) , 5) PRA -fp16 an ideal engine that processes only the essential activation bits in the native 16 -bit fixed-point representation, and 6) PRA -red , an ideal engine that processes only the essential activation bits of the reduced precision formats used in STR .
 
 [Figure 3](img/ieee_8686550_fig3.gif) reports the number of terms processed, normalized over DaDN , where each multiplication is accounted for using an equivalent number of terms: 16 for DaDN , ZN, and CVN, p for a layer using a precision of p bits for STR , and the number of essential activation bits for PRA -fp16, and for PRA -red. For example, for $n=10.001_{(2)},$ the number of additions counted would be 16 for DaDN and $CVN, 5$ for STR (as it could use a 5 -bit fixed-point representation), and 2 for PRA -fp16 and PRA -red.
 
@@ -305,7 +305,7 @@ The rest of this section is organized as follows: [Section 6.1](#61-methodology)
 
 ### 6.1 Methodology
 
-All systems were modelled using the same methodology for consistency. A custom cycle-level simulator models execution time. Computation was scheduled such that all designs see the same reuse of weights and thus the same SB read energy. To estimate power and area, all tile pipeline designs were synthesized with the Synopsys Design Compiler [\[27\]](ref27) for a TSMC 65nm library and laid out with Cadence Encounter. Circuit activity was captured with Mentor Graphics ModelSim and fed into Encounter for power estimation. The NBin and NBout SRAM buffers were modelled using CACTI [\[22\]](ref22) . The eDRAM area and energy were modelled with Destiny [\[25\]](ref25) . To compare against STR , the per layer numerical representation requirements reported in [Table 2](table2) were found using the methodology of Judd et al. [\[19\]](ref19) . All performance measurements are for the convolutional layers only which account for more than 92% of the computation in the networks we consider.
+All systems were modelled using the same methodology for consistency. A custom cycle-level simulator models execution time. Computation was scheduled such that all designs see the same reuse of weights and thus the same SB read energy. To estimate power and area, all tile pipeline designs were synthesized with the Synopsys Design Compiler [\[27\]](ref27) for a TSMC 65nm library and laid out with Cadence Encounter. Circuit activity was captured with Mentor Graphics ModelSim and fed into Encounter for power estimation. The NBin and NBout SRAM buffers were modelled using CACTI [\[22\]](ref22) . The eDRAM area and energy were modelled with Destiny [\[25\]](ref25) . To compare against STR , the per layer numerical representation requirements reported in [Table 2](img/ieee_8686550_table2.gif) were found using the methodology of Judd et al. [\[19\]](ref19) . All performance measurements are for the convolutional layers only which account for more than 92% of the computation in the networks we consider.
 
 
 
@@ -335,7 +335,7 @@ PRA single improves performance by 2.59 $\times$ on average over DaDN compared t
 
 #### 6.2.2 Area and Power:
 
-[Table 3](table3) shows area and power for DaDN and Pragmatic . Two measurements are reported: 1) for the unit excluding the SB, NBin and NBout memory blocks, and 2) for the whole chip comprising 16 units and all memory blocks. Since SB and NM dominate chip area, the compute area overheads are relatively small. PRA 2b is the most efficient configuration with an average speedup of 2.59 $\times$ for an area and power cost of 1.68 $\times$ and 2.50 $\times$ , respectively, over DaDN . Accordingly, the rest of this evaluation restricts attention to this configuration.
+[Table 3](img/ieee_8686550_table3.gif) shows area and power for DaDN and Pragmatic . Two measurements are reported: 1) for the unit excluding the SB, NBin and NBout memory blocks, and 2) for the whole chip comprising 16 units and all memory blocks. Since SB and NM dominate chip area, the compute area overheads are relatively small. PRA 2b is the most efficient configuration with an average speedup of 2.59 $\times$ for an area and power cost of 1.68 $\times$ and 2.50 $\times$ , respectively, over DaDN . Accordingly, the rest of this evaluation restricts attention to this configuration.
 
 
 ![Figure 10: - Column Synchronization: Relative performance of PRA2b as a function of the SB registers used.](img/ieee_8686550_fig10.gif)
@@ -373,9 +373,9 @@ The offset generators for one tile in this configuration requires 181,950 u $m^{
 
 #### 6.3.2 Area and Power:
 
-[Table 4](table4) reports the area per unit, and the area and power per chip. PR $A_{2b}^{1R}$ offers most of the performance benefit with little additional hardware. This configuration increases chip area to only 1.68 $\times$ and power to only 2.54 $\times$ over DaDN .
+[Table 4](img/ieee_8686550_table4.gif) reports the area per unit, and the area and power per chip. PR $A_{2b}^{1R}$ offers most of the performance benefit with little additional hardware. This configuration increases chip area to only 1.68 $\times$ and power to only 2.54 $\times$ over DaDN .
 
-[Table 5](table5) shows the area and power breakdown of this configuration. Since we do not layout a full chip design we estimated the interconnect cost separately. We assume the interconnect will be routed over the existing logic and does not increase chip area. An interconnect width of 4 bits per activation was chosen to balance performance and power. This configuration yields performance within 1.2% of the ideal (infinite bandwidth), while consuming 6% of the chip power.
+[Table 5](img/ieee_8686550_table5.gif) shows the area and power breakdown of this configuration. Since we do not layout a full chip design we estimated the interconnect cost separately. We assume the interconnect will be routed over the existing logic and does not increase chip area. An interconnect width of 4 bits per activation was chosen to balance performance and power. This configuration yields performance within 1.2% of the ideal (infinite bandwidth), while consuming 6% of the chip power.
 
 
 
@@ -405,13 +405,13 @@ Finally, using IOE increases efficiency to 1.70 $\times$ over DaDN , an improvem
 
 ### 6.6 Sensitivity to Tile Configuration
 
-[Table 6](table6) reports performance of PR $A_{2b}^{1R}$ over an equivalent DaDN for various Tiles-Filters/Tile-Terms/Filter configurations. The configuration studied thus far was 16-16-16 . Reducing the number of tiles does not change the relative performance improvement with PRA . Decreasing the number of terms per filter, however, greatly impacts relative performance. At the extreme, where only one term per filter is processed, PRA is almost 8 $\times$ faster than DaDN . This result demonstrates that most of the performance potential loss is due to imbalance across activation lanes.
+[Table 6](img/ieee_8686550_table6.gif) reports performance of PR $A_{2b}^{1R}$ over an equivalent DaDN for various Tiles-Filters/Tile-Terms/Filter configurations. The configuration studied thus far was 16-16-16 . Reducing the number of tiles does not change the relative performance improvement with PRA . Decreasing the number of terms per filter, however, greatly impacts relative performance. At the extreme, where only one term per filter is processed, PRA is almost 8 $\times$ faster than DaDN . This result demonstrates that most of the performance potential loss is due to imbalance across activation lanes.
 
 
 
 ### 6.7 8-bit Quantization
 
-[Table 7](table7) reports performance for DaDN, STR , and PRA configurations using the 8-bit quantized representation used in Tensorflow [\[11\]](ref11) , [\[29\]](ref29) . This quantization uses 8 bits to specify arbitrary minimum and maximum limits per layer for the activations and the weights separately, and maps the 256 available 8-bit values linearly into the resulting interval.
+[Table 7](img/ieee_8686550_table7.gif) reports performance for DaDN, STR , and PRA configurations using the 8-bit quantized representation used in Tensorflow [\[11\]](ref11) , [\[29\]](ref29) . This quantization uses 8 bits to specify arbitrary minimum and maximum limits per layer for the activations and the weights separately, and maps the 256 available 8-bit values linearly into the resulting interval.
 
 
 ![Table VII- : Area [$mm^{2}$], Power [W], Speedup and Efficiency For 8-Bit Variants the Three Designs.](img/ieee_8686550_table7.gif)
@@ -419,7 +419,7 @@ Finally, using IOE increases efficiency to 1.70 $\times$ over DaDN , an improvem
 **Table VII** 
 
 
-[Table 7](table7) reports energy efficiency relative to DaDN for 8-bit versions of STR and PR $A_{2b}^{1R}$ with IOE. In these designs, both activations and weights are 8 bits. For STR and PRA , we reduce the number of SIP/PIP columns to 8 to match DaDN ’s throughput in the worst case. STR yields no speedup since we did not profile reducing the precision on top of the 8-bit quantization. As a result it is less energy efficient than DaDN. PRA’s speedup is 2. 25x with an area overhead of 1.31x and a power overhead ofl. 71x, making it 1. 31x more energy efficient on average.
+[Table 7](img/ieee_8686550_table7.gif) reports energy efficiency relative to DaDN for 8-bit versions of STR and PR $A_{2b}^{1R}$ with IOE. In these designs, both activations and weights are 8 bits. For STR and PRA , we reduce the number of SIP/PIP columns to 8 to match DaDN ’s throughput in the worst case. STR yields no speedup since we did not profile reducing the precision on top of the 8-bit quantization. As a result it is less energy efficient than DaDN. PRA’s speedup is 2. 25x with an area overhead of 1.31x and a power overhead ofl. 71x, making it 1. 31x more energy efficient on average.
 
 
 
