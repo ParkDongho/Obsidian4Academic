@@ -106,7 +106,19 @@ def parseSection(input, ieee_paper_info):
                     # 캡션 추출
                     caption_title = fig_caption.find('b', class_='title').get_text(strip=True) \
                         if fig_caption.find('b', class_='title') else ''
-                    caption_text = fig_caption.find('p').get_text(strip=True) if fig_caption.find('p') else ''
+
+                    if fig_caption:  # fig_caption이 None이 아닌지 먼저 확인
+                        # 먼저 <p> 태그를 찾음
+                        p_tag = fig_caption.find('p')
+
+                        # <p> 태그가 존재하면 해당 텍스트를 사용
+                        if p_tag:
+                            caption_text = p_tag.get_text(strip=True)
+                        else:
+                            # <p> 태그가 없으면, fig_caption.contents[1]을 사용하기 전에 인덱스가 안전한지 확인
+                            if len(fig_caption.contents) > 1:
+                                caption_text = fig_caption.contents[1]
+
                     alt_text = alt_text.replace("\n", "")
 
                     img_file_name = f"ieee_{ieee_paper_info['ieee_paper_id']}_{data_fig_id}.gif"
@@ -218,22 +230,6 @@ def html_to_markdown(driver, ieee_paper_info):
     time.sleep(5)
     html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
-
-    # Extract title
-    # title = soup.find('title').text.strip() if soup.find('title') else "No Title"
-
-    # Extract abstract
-    # abstract_section = soup.find('meta', {'name': 'Description'})
-    # abstract = abstract_section['content'] if abstract_section else "No Abstract"
-
-    # Extract authors
-    # authors = [tag['content'] for tag in soup.find_all('meta', {'name': 'parsely-author'})]
-
-    # Convert to Markdown
-    # markdown_content = f"# {title}\n\n"
-    # markdown_content += f"## Abstract\n\n{abstract}\n\n"
-    #     if authors:
-    #         markdown_content += f"## Authors\n\n" + ", ".join(authors) + "\n\n"
 
     # Extract sections and process paragraphs
     sections, fig_table_data = parsePaper(soup.find_all('div', class_=['section']), ieee_paper_info)
@@ -384,8 +380,8 @@ def main(ieee_paper_id = 7738524,
 # argSparse를 이용하여 cli에서 argument를 입력하여 실행 할 수 있도록 함
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='IEEEXplore Crawler')
-    parser.add_argument('--ieee_paper_id', type=int, default=7738524, help='IEEE Paper ID')
-    parser.add_argument('--output_md_path', type=str, default='test/eyeriss.md', help='Output Markdown File Path')
+    parser.add_argument('--ieee_paper_id', type=int, default=9586216, help='IEEE Paper ID')
+    parser.add_argument('--output_md_path', type=str, default='test/gemmini.md', help='Output Markdown File Path')
     parser.add_argument('--output_img_dir', type=str, default='test/img', help='Output Image Directory Path')
     parser.add_argument('--relative_img_dir', type=str, default='img', help='Relative Image Directory Path')
     parser.add_argument('--paper_info_path', type=str, default='test/paper_info.json', help='Paper Info JSON File Path')
