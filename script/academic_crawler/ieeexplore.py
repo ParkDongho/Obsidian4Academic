@@ -220,31 +220,31 @@ def html_to_markdown(driver, ieee_paper_info):
     soup = BeautifulSoup(html, 'html.parser')
 
     # Extract title
-    title = soup.find('title').text.strip() if soup.find('title') else "No Title"
+    # title = soup.find('title').text.strip() if soup.find('title') else "No Title"
 
     # Extract abstract
-    abstract_section = soup.find('meta', {'name': 'Description'})
-    abstract = abstract_section['content'] if abstract_section else "No Abstract"
+    # abstract_section = soup.find('meta', {'name': 'Description'})
+    # abstract = abstract_section['content'] if abstract_section else "No Abstract"
 
     # Extract authors
-    authors = [tag['content'] for tag in soup.find_all('meta', {'name': 'parsely-author'})]
+    # authors = [tag['content'] for tag in soup.find_all('meta', {'name': 'parsely-author'})]
+
+    # Convert to Markdown
+    # markdown_content = f"# {title}\n\n"
+    # markdown_content += f"## Abstract\n\n{abstract}\n\n"
+    #     if authors:
+    #         markdown_content += f"## Authors\n\n" + ", ".join(authors) + "\n\n"
 
     # Extract sections and process paragraphs
     sections, fig_table_data = parsePaper(soup.find_all('div', class_=['section']), ieee_paper_info)
 
-    # Convert to Markdown
-    markdown_content = f"# {title}\n\n"
-    markdown_content += f"## Abstract\n\n{abstract}\n\n"
-    if authors:
-        markdown_content += f"## Authors\n\n" + ", ".join(authors) + "\n\n"
-
+    markdown_content = ""
     for heading_level, section_title, section_content, section_id in sections:
         markdown_content += f"{'#' * heading_level} {section_title}\n\n{section_content}\n\n"
 
     ieee_paper_info['img_info'] = fig_table_data
     ieee_paper_info['section_info'] = sections
     return (markdown_content, ieee_paper_info)
-
 
 
 def download_images(driver, ieee_paper_info):
@@ -341,20 +341,23 @@ def extract_references(driver, ieee_paper_info):
     ieee_paper_info['reference_info'] = reference_list
     return ieee_paper_info
 
-def main():
-    # Execute the function
+def main(ieee_paper_id = 7738524,
+         output_md_path = 'test/eyeriss.md',
+         output_img_dir = "test/img",
+         relative_img_dir = "img",
+         paper_info_path = "test/paper_info.json"):
+
+    driver = webdriver.Chrome()
     ieee_paper_info = {
-        "output_md_path": 'test/eyeriss.md',
-        "output_img_dir": "test/img",
-        "relative_img_dir": "img",
-        "paper_info_path": "test/paper_info.json",
-        "ieee_paper_id": 7738524,
+        "output_md_path": output_md_path,
+        "output_img_dir": output_img_dir,
+        "relative_img_dir": relative_img_dir,
+        "paper_info_path": paper_info_path,
+        "ieee_paper_id": ieee_paper_id,
         "reference_info": [],
         "img_info": [],
         "section_info": [],
     }
-
-    driver = webdriver.Chrome()  # 필요에 따라 WebDriver 경로 지정
 
     # step 1 : get reference data
     ieee_paper_info = extract_references(driver, ieee_paper_info)
@@ -367,7 +370,7 @@ def main():
     # step 3 : download images
     download_images(driver, ieee_paper_info)
 
-    # step 4 : save markdown file
+    # step 4 : download markdown file
     with open(ieee_paper_info["output_md_path"], 'w', encoding='utf-8') as md_file:
         md_file.write(markdown_contents)
         print(f"Markdown file saved: {ieee_paper_info['output_md_path']}")
@@ -376,4 +379,17 @@ def main():
     with open(ieee_paper_info["paper_info_path"], 'w', encoding='utf-8') as json_file:
         json.dump(ieee_paper_info, json_file, ensure_ascii=False, indent=4)
 
-main()
+
+
+# argSparse를 이용하여 cli에서 argument를 입력하여 실행 할 수 있도록 함
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='IEEEXplore Crawler')
+    parser.add_argument('--ieee_paper_id', type=int, default=7738524, help='IEEE Paper ID')
+    parser.add_argument('--output_md_path', type=str, default='test/eyeriss.md', help='Output Markdown File Path')
+    parser.add_argument('--output_img_dir', type=str, default='test/img', help='Output Image Directory Path')
+    parser.add_argument('--relative_img_dir', type=str, default='img', help='Relative Image Directory Path')
+    parser.add_argument('--paper_info_path', type=str, default='test/paper_info.json', help='Paper Info JSON File Path')
+    args = parser.parse_args()
+
+    main(args.ieee_paper_id, args.output_md_path, args.output_img_dir, args.relative_img_dir, args.paper_info_path)
+
