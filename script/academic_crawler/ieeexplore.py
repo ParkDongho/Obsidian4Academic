@@ -6,6 +6,8 @@ import requests
 import argparse
 import re
 
+from docutils.nodes import caption
+from mistune import markdown
 from orca.punctuation_settings import section
 from selenium import webdriver
 import time
@@ -30,6 +32,7 @@ def parsePaper(input, ieee_paper_info):
         sections = sections + single_section
         fig_table_data = fig_table_data + fig_table_tmp
     return (sections, fig_table_data)
+
 
 
 def parseSection(input, ieee_paper_info):
@@ -69,69 +72,20 @@ def parseSection(input, ieee_paper_info):
                 # 찾고자 하는 <span> 태그와 그 내부의 텍스트를 추출
                 span_tag = paragraph.find('span', class_="tex tex2jax_ignore")
                 if span_tag and span_tag.text:
-                    latex_code = span_tag.text.strip()  # 텍스트를 가져와서 공백 제거
-                    section_content += f"\n$$\n{latex_code}\n$$\n\n"
+                    latex_code = span_tag.text #텍스트를 가져와서 공백 제거
+                    section_content += f"\n\n$$\n{latex_code}\n$$\n\n"
                 else:
                     print("No latex code found in disp-formula")
 
             # 본문 처리
             elif paragraph.name == "p":
-
-                # inline-formula 처리
-                for math in paragraph.find_all('inline-formula'):
-                    latex_code = math.find('script', {'type': 'math/tex'}).text
-                    math.replace_with(f"${latex_code}$")
+                section_content += f"{parseParagraph(paragraph, ieee_paper_info)}\n\n"
 
 
-                for math in paragraph.find_all('disp-formula'):
-                    span_tag = math.find('span', class_="tex tex2jax_ignore")
-                    if span_tag and span_tag.text:
-                        latex_code = span_tag.text.strip()  # 텍스트를 가져와서 공백 제거
-                        math.replace_with(f"\n$$\n{latex_code}\n$$\n\n")
-                    else:
-                        print("No latex code found in disp-formula")
-
-                # 참조 처리
-                for link in paragraph.find_all('a'):
-                    # bibriography 처리
-                    if link.attrs['ref-type'] == "bibr":
-                        link_text = link.text
-                        if link.text[0] == "[":
-                            link_text = link.text.replace("[", "\[")
-                        if link.text[-1] == "]":
-                            link_text = link_text.replace("]", "\]")
-                        link.replace_with(f"[{link_text}]({link.attrs['anchor']})")
-
-                    # 본문 내 이미지 관련 참조 처리
-                    elif link.attrs['ref-type'] == "fig":
-                        anchor = link.attrs['anchor']
-                        img_name = next((img for img in ieee_paper_info["img_info"] if img["data_fig_id"] == anchor), None)
-                        img_path = f"{ieee_paper_info['relative_img_dir']}/{img_name['img_file_name']}" if img_name else "none"
-                        link.replace_with(f"[{link.text}]({img_path})")
-
-                    # 본문 내 표 관련 참조 처리
-                    elif link.attrs['ref-type'] == "table":
-                        anchor = link.attrs['anchor']
-                        img_name = next((img for img in ieee_paper_info["img_info"] if img["data_fig_id"] == anchor), None)
-                        img_path = f"{ieee_paper_info['relative_img_dir']}/{img_name['img_file_name']}" if img_name else "none"
-                        link.replace_with(f"[{link.text}]({img_path})")
-
-                    # 본문 내 섹션 관련 참조 처리
-                    elif link.attrs['ref-type'] == "sec":
-                        anchor = link.attrs['anchor']
-                        section_link_title = str(next((item[1] for item in ieee_paper_info["section_info"] if item[3] == anchor), None))
-                        section_path = f"{convert_to_markdown_link(section_link_title)}" if section_link_title else "none"
-                        link.replace_with(f"[{link.text}]({section_path})")
-
-                    # 본문 내 수식 관련 참조 처리
-                    elif link.attrs['ref-type'] == "fn":
-                        link.replace_with(f"[{link.text}]({link.attrs['anchor']})")
-
-                    else:
-                        print("Unhandled Link: ", link.text, ", ", link.attrs['ref-type'], ", ", link.attrs['anchor'])
-
-                paragraph_text = ' '.join(paragraph.stripped_strings)
-                section_content += paragraph_text + "\n\n"
+            elif paragraph.name == "ol":
+                for li in paragraph.find_all('li'):
+                    section_content += f"1. {parseParagraph(li.contents[0], ieee_paper_info)}\n"
+                section_content += "\n\n"
 
 
 
@@ -153,6 +107,7 @@ def parseSection(input, ieee_paper_info):
                     caption_title = fig_caption.find('b', class_='title').get_text(strip=True) \
                         if fig_caption.find('b', class_='title') else ''
                     caption_text = fig_caption.find('p').get_text(strip=True) if fig_caption.find('p') else ''
+                    alt_text = alt_text.replace("\n", "")
 
                     img_file_name = f"ieee_{ieee_paper_info['ieee_paper_id']}_{data_fig_id}.gif"
                     img_file_path = f"{ieee_paper_info['relative_img_dir']}/{img_file_name}"
@@ -161,7 +116,7 @@ def parseSection(input, ieee_paper_info):
                     markdown_output = f"![{alt_text}]({img_file_path})\n\n**{caption_title}** {caption_text}"
 
                     # 섹션 내용에 추가
-                    section_content += f"\n{markdown_output}\n"
+                    section_content += f"\n{markdown_output}\n\n"
                     fig_table_data.append({
                         "image_href": f"https://ieeexplore.ieee.org/{image_href}",
                         "img_file_name": img_file_name,
@@ -180,12 +135,85 @@ def parseSection(input, ieee_paper_info):
 
     return (single_section, fig_table_data)
 
+def parseParagraph(paragraph, ieee_paper_info):
+
+        # 본문 처리
+        paragraph_contetns_list = []
+        if isinstance(paragraph, NavigableString):
+            return paragraph.text
+        else:
+            for paragrph_element in paragraph.contents:
+                if isinstance(paragrph_element, NavigableString):
+                    paragraph_contetns_list.append(paragrph_element.text)
+
+                elif isinstance(paragrph_element, Tag):
+                    # inline formula
+                    if paragrph_element.name == "inline-formula":
+                        latex_code = paragrph_element.find('script', {'type': 'math/tex'}).text
+                        latex_code = latex_code.replace("\n", "")
+                        paragraph_contetns_list.append(f"${latex_code}$")
+
+                    # disp-formula
+                    elif paragrph_element.name == "disp-formula":
+                        span_tag = paragrph_element.find('span', class_="tex tex2jax_ignore")
+                        if span_tag and span_tag.text:
+                            latex_code = span_tag.text
+                            latex_code = latex_code.replace("\n", "")
+                            paragraph_contetns_list.append(f"\n\n$$\n{latex_code}\n$$\n\n")
+
+                    # bold, italic 처리
+                    elif paragrph_element.name == "i":
+                        paragraph_contetns_list.append(f"*{paragrph_element.text}*")
+                    elif paragrph_element.name == "b":
+                        paragraph_contetns_list.append(f"**{paragrph_element.text}**")
+
+
+                    # 인용문 처리
+                    elif paragrph_element.name == "a":
+                        if paragrph_element.attrs['ref-type'] == "bibr":
+                            link_text = paragrph_element.text
+                            if paragrph_element.text[0] == "[":
+                                link_text = paragrph_element.text.replace("[", "\[")
+                            if paragrph_element.text[-1] == "]":
+                                link_text = link_text.replace("]", "\]")
+                            paragraph_contetns_list.append(f"[{link_text}]({paragrph_element.attrs['anchor']})")
+
+                        elif paragrph_element.attrs['ref-type'] == "fig":
+                            anchor = paragrph_element.attrs['anchor']
+                            img_name = next((img for img in ieee_paper_info["img_info"] if img["data_fig_id"] == anchor), None)
+                            img_path = f"{ieee_paper_info['relative_img_dir']}/{img_name['img_file_name']}" if img_name else "none"
+                            paragraph_contetns_list.append(f"[{paragrph_element.text}]({img_path})")
+
+                        elif paragrph_element.attrs['ref-type'] == "table":
+                            anchor = paragrph_element.attrs['anchor']
+                            img_name = next((img for img in ieee_paper_info["img_info"] if img["data_fig_id"] == anchor), None)
+                            img_path = f"{ieee_paper_info['relative_img_dir']}/{img_name['img_file_name']}" if img_name else "none"
+                            paragraph_contetns_list.append(f"[{paragrph_element.text}]({img_path})")
+
+                        elif paragrph_element.attrs['ref-type'] == "sec":
+                            anchor = paragrph_element.attrs['anchor']
+                            section_link_title = str(next((item[1] for item in ieee_paper_info["section_info"] if item[3] == anchor), None))
+                            section_path = f"{convert_to_markdown_link(section_link_title)}" if section_link_title else "none"
+                            paragraph_contetns_list.append(f"[{paragrph_element.text}]({section_path})")
+
+                        elif paragrph_element.attrs['ref-type'] == "fn":
+                            paragraph_contetns_list.append(f"[{paragrph_element.text}]({paragrph_element.attrs['anchor']})")
+
+                        elif paragrph_element.attrs['ref-type'] == "disp-formula":
+                            paragraph_contetns_list.append(f"[{paragrph_element.text}]({paragrph_element.attrs['anchor']})")
+
+                        else:
+                            print("Unhandled Link: ", paragrph_element.text, ", ", paragrph_element.attrs['ref-type'], ", ", paragrph_element.attrs['anchor'])
+                    else:
+                        print("Unhandled Tag: ", paragrph_element.name)
+                        paragraph_contetns_list.append(paragrph_element.text)
+
+            return "".join(paragraph_contetns_list)
+
+
 # Function to extract content and convert to Markdown
 def html_to_markdown(driver, ieee_paper_info):
-    # with open(html_path, 'r', encoding='utf-8') as file:
-    #     html_content = file.read()
 
-    driver.get(f"https://ieeexplore.ieee.org/document/{ieee_paper_info['ieee_paper_id']}")
 
     time.sleep(5)
     html = driver.page_source
@@ -213,15 +241,9 @@ def html_to_markdown(driver, ieee_paper_info):
     for heading_level, section_title, section_content, section_id in sections:
         markdown_content += f"{'#' * heading_level} {section_title}\n\n{section_content}\n\n"
 
-    # Save as Markdown
-    with open(ieee_paper_info["output_md_path"], 'w', encoding='utf-8') as md_file:
-        md_file.write(markdown_content)
-
-    print(f"Markdown successfully saved to {ieee_paper_info['output_md_path']}")
-
     ieee_paper_info['img_info'] = fig_table_data
     ieee_paper_info['section_info'] = sections
-    return ieee_paper_info
+    return (markdown_content, ieee_paper_info)
 
 
 
@@ -322,11 +344,11 @@ def extract_references(driver, ieee_paper_info):
 def main():
     # Execute the function
     ieee_paper_info = {
-        "output_md_path": 'test/output.md',
+        "output_md_path": 'test/eyeriss.md',
         "output_img_dir": "test/img",
         "relative_img_dir": "img",
         "paper_info_path": "test/paper_info.json",
-        "ieee_paper_id": 8686550,
+        "ieee_paper_id": 7738524,
         "reference_info": [],
         "img_info": [],
         "section_info": [],
@@ -338,16 +360,17 @@ def main():
     ieee_paper_info = extract_references(driver, ieee_paper_info)
 
     # step 2 : get markdown data
-    ieee_paper_info = html_to_markdown(driver, ieee_paper_info)
-    ieee_paper_info = html_to_markdown(driver, ieee_paper_info)
+    driver.get(f"https://ieeexplore.ieee.org/document/{ieee_paper_info['ieee_paper_id']}")
+    (markdown_contents, ieee_paper_info) = html_to_markdown(driver, ieee_paper_info)
+    (markdown_contents, ieee_paper_info) = html_to_markdown(driver, ieee_paper_info)
 
     # step 3 : download images
     download_images(driver, ieee_paper_info)
 
-    # step 4 :
-
-
     # step 4 : save markdown file
+    with open(ieee_paper_info["output_md_path"], 'w', encoding='utf-8') as md_file:
+        md_file.write(markdown_contents)
+        print(f"Markdown file saved: {ieee_paper_info['output_md_path']}")
 
     # step 5 : save ieee_paper_info as json file
     with open(ieee_paper_info["paper_info_path"], 'w', encoding='utf-8') as json_file:
