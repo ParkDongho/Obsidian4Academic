@@ -32,6 +32,8 @@ external_ids:
   CorpusId: 49903997
   DBLP: journals/corr/abs-1807-07928
   MAG: '2884201348'
+  IEEE: None
+  ACM: None
 title: 'Eyeriss v2: A Flexible and High-Performance Accelerator for Emerging Deep
   Neural Networks'
 venue: arXiv.org

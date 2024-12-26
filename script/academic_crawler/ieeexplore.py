@@ -16,7 +16,7 @@ from bs4 import Tag, NavigableString
 
 
 def convert_to_markdown_link(title):
-    # 1. 제목에서 소문자로 변환
+    # 1. 제목 데이터를 소문자로 변환
     # 2. 공백을 하이픈으로 변환
     # 3. 특수 문자를 제거 (단, 숫자와 하이픈은 유지)
     link = re.sub(r'[^\w\s-]', '', title)  # 특수문자 제거
