@@ -38,9 +38,3 @@ python3 ieeexplore.py
 
 ### get_ieee_to_semantic()
 
-ieee paper 번호를 입력하면 해당 논문의 semantic scholar id를 반환
-- `.yaml` 파일을 읽어서 ieee paper 번호와 semantic scholar id를 매핑하는 함수
-- 만약 해당 논문에 대한 `.yaml` 파일이 없다면, ieee paper 번호를 통해 doi를 얻어내고, doi를 통해 semantic scholar id를 얻어냄  
-  - smantic scholar에 대한 infomation.yaml 파일을 생성 
-
-

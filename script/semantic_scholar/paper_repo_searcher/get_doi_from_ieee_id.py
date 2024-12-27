@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-def get_doi_from_ieee_paper(document_number, driver):
+def get_doi_from_ieee_id(document_number, driver):
     try:
         # IEEE 문서 URL
         url = f"https://ieeexplore.ieee.org/document/{document_number}"
@@ -23,7 +23,7 @@ def get_doi_from_ieee_paper(document_number, driver):
 
 # 사용 예시
 if __name__ == "__main__":
-    document_number = "6091211"  # IEEE 논문 번호
+    document_number = "7738524"  # IEEE 논문 번호
 
     # Selenium 브라우저 설정
     service = Service(ChromeDriverManager().install())
@@ -34,5 +34,5 @@ if __name__ == "__main__":
     options.add_argument('--disable-dev-shm-usage')  # 메모리 부족 문제 해결
 
     driver = webdriver.Chrome(service=service, options=options)
-    doi = get_doi_from_ieee_paper(document_number, driver)
+    doi = get_doi_from_ieee_id(document_number, driver)
     print(f"https://doi.org/{doi}")

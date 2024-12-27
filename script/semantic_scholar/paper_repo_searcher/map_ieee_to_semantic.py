@@ -1,27 +1,7 @@
 import os
 import yaml
-import requests
-import semantic.ieee_doi
-
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
-
-
-def get_semantic_scholar_id_from_doi(doi):
-    """
-    Get the Semantic Scholar ID using DOI.
-    """
-    url = f"https://api.semanticscholar.org/graph/v1/paper/DOI:{doi}?fields=paperId"
-    response = requests.get(url)
-    if response.status_code == 200:
-        return response.json().get('paperId', None)
-    return None
-
-
-
+import get_doi_from_ieee_id
+from script.semantic_scholar.paper_repo_searcher import get_semantic_scholar_id_from_doi
 
 
 def map_ieee_to_semantic(directory, ieee_paper_number):
@@ -37,7 +17,7 @@ def map_ieee_to_semantic(directory, ieee_paper_number):
                     return content['external_ids'].get('CorpusId')
 
     # If not found, fetch DOI and Semantic Scholar ID
-    doi = get_doi_from_ieee_paper(ieee_paper_number)
+    doi = get_doi_from_ieee_id(ieee_paper_number)
     semantic_id = get_semantic_scholar_id_from_doi(doi)
 
     if semantic_id:
@@ -57,12 +37,14 @@ def map_ieee_to_semantic(directory, ieee_paper_number):
     return None
 
 
-# Example usage:
-directory = "/path/to/your/yaml/files"  # Replace with your directory path
-ieee_paper_number = "3007787.3001177"  # Replace with your IEEE paper number
-semantic_id = map_ieee_to_semantic(directory, ieee_paper_number)
 
-if semantic_id:
-    print(f"Semantic Scholar ID for IEEE paper {ieee_paper_number}: {semantic_id}")
-else:
-    print(f"Semantic Scholar ID for IEEE paper {ieee_paper_number} could not be found.")
+
+# Example usage:
+# directory = "/path/to/your/yaml/files"  # Replace with your directory path
+# ieee_paper_number = "3007787.3001177"  # Replace with your IEEE paper number
+# semantic_id = map_ieee_to_semantic(directory, ieee_paper_number)
+#
+# if semantic_id:
+#     print(f"Semantic Scholar ID for IEEE paper {ieee_paper_number}: {semantic_id}")
+# else:
+#     print(f"Semantic Scholar ID for IEEE paper {ieee_paper_number} could not be found.")
