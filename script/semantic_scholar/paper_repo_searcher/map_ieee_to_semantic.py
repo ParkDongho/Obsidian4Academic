@@ -35,5 +35,3 @@ def map_ieee_to_semantic(directory, ieee_paper_number):
         return semantic_id
 
     return None
-
-

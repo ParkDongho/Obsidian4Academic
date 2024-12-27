@@ -1,0 +1,36 @@
+abstract: NVDLA is an open-source deep neural network (DNN) accelerator which has
+  received a lot of attention by the community since its introduction by Nvidia. It
+  is a full-featured hardware IP and can serve as a good reference for conducting
+  research and development of SoCs with integrated accelerators. However, an expensive
+  FPGA board is required to do experiments with this IP in a real SoC. Moreover, since
+  NVDLA is clocked at a lower frequency on an FPGA, it would be hard to do accurate
+  performance analysis with such a setup. To overcome these limitations, we integrate
+  NVDLA into a real RISC-V SoC on the Amazon cloud FPGA using FireSim, a cycle-exact
+  FPGA-accelerated simulator. We then evaluate the performance of NVDLA by running
+  YOLOv3 object-detection algorithm. Our results show that NVDLA can sustain 7.5 fps
+  when running YOLOv3. We further analyze the performance by showing that sharing
+  the last-level cache with NVDLA can result in up to 1.56x speedup. We then identify
+  that sharing the memory system with the accelerator can result in unpredictable
+  execution time for the real-time tasks running on this platform. We believe this
+  is an important issue that must be addressed in order for on-chip DNN accelerators
+  to be incorporated in real-time embedded systems.
+authors:
+- F. Farshchi
+- Qijing Huang
+- H. Yun
+citation_count: 44
+date: '2019-02-01'
+external_ids:
+  ACM: null
+  ArXiv: '1903.06495'
+  CorpusId: 80628291
+  DBLP: conf/emc2/Farshchi0Y19
+  DOI: 10.1109/EMC249363.2019.00012
+  IEEE: '9027215'
+  MAG: '3011338798'
+  SEMANTIC: 0f01075f18402960f6b58864243304971ab49dc9
+title: Integrating NVIDIA Deep Learning Accelerator (NVDLA) with RISC-V SoC on FireSim
+venue: 2019 2nd Workshop on Energy Efficient Machine Learning and Cognitive Computing
+  for Embedded Applications (EMC2)
+venue_short: Unknown Venue
+year: 2019

@@ -23,16 +23,16 @@ authors:
 - Tien-Ju Yang
 - J. Emer
 - V. Sze
-citation_count: 753
+citation_count: 754
 date: '2018-07-10'
 external_ids:
+  ACM: null
   CorpusId: 131771552
   DBLP: journals/esticas/ChenYES19
   DOI: 10.1109/JETCAS.2019.2910232
-  MAG: '2945146780'
   IEEE: '8686088'
-  ACM: 'None'
-  SEMANTIC: '0682bfa5cca15726aab6c00ecfac91eb44379626'
+  MAG: '2945146780'
+  SEMANTIC: 0682bfa5cca15726aab6c00ecfac91eb44379626
 title: 'Eyeriss v2: A Flexible Accelerator for Emerging Deep Neural Networks on Mobile
   Devices'
 venue: IEEE Journal on Emerging and Selected Topics in Circuits and Systems

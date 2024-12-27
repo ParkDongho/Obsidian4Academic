@@ -23,11 +23,11 @@ authors:
 citation_count: 2343
 date: '2016-02-01'
 external_ids:
-  ACM: 1
+  ACM: null
   CorpusId: 207882941
   DBLP: journals/jssc/ChenKES17
   DOI: 10.1109/JSSC.2016.2616357
-  IEEE: 1
+  IEEE: '7738524'
   MAG: '3023154643'
   SEMANTIC: ffdaa12ef011de9dbf43be46d45a3abcc8288965
 title: 'Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional

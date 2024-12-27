@@ -1,4 +1,8 @@
 from .get_paper_info import get_paper_info
 from .get_reference_info import get_reference_info
-
-
+from .get_citation_info import get_citation_info
+from .paper_repo_searcher import get_semantic_id_from_ieee_id
+from .paper_repo_searcher import map_ieee_to_semantic
+from .paper_repo_searcher import search_from_database
+from .paper_repo_searcher import get_doi_from_ieee_id
+from .paper_repo_searcher import get_semantic_scholar_id_from_doi
