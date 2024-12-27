@@ -3,6 +3,26 @@
         "intents": [],
         "isInfluential": false,
         "citingPaper": {
+            "paperId": "4e7415382bd75aec62871cad3aa3ef942fa39a6e",
+            "title": "USEFUSE: Utile Stride for Enhanced Performance in Fused Layer Architecture of Deep Neural Networks",
+            "venue": "",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "88ceb3bae62b4df262813578526be222e14ab89b",
+            "title": "Fast Design Space Exploration for Always-On Neural Networks",
+            "venue": "Electronics",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
             "paperId": "26005f93c494148716d258e3b45983059f417515",
             "title": "MVQ:Towards Efficient DNN Compression and Acceleration with Masked Vector Quantization",
             "venue": "",
@@ -45,6 +65,16 @@
         "citingPaper": {
             "paperId": "72aaf33ae0c57089c1cfe9815c725e3c8c007149",
             "title": "A Prototype-Based Framework to Design Scalable Heterogeneous SoCs with Fine-Grained DFS",
+            "venue": "",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "470462ed5ebed4c0f79769b4156484f861f61920",
+            "title": "Hardware Accelerators for Artificial Intelligence",
             "venue": "",
             "year": 2024
         }
@@ -130,6 +160,16 @@
             "paperId": "4476d361a4542d94d895420c15a17b2900d7ec76",
             "title": "A Throughput-Optimized Accelerator for Submanifold Sparse Convolutional Networks",
             "venue": "2024 IEEE 13th Global Conference on Consumer Electronics (GCCE)",
+            "year": 2024
+        }
+    },
+    {
+        "intents": [],
+        "isInfluential": false,
+        "citingPaper": {
+            "paperId": "fd5e8724e3820906156353a260eafecfc32e2f4a",
+            "title": "Fully Convolution Based Denoise Autoencoder AI Accelerator for ECG Arrhythmia Classification",
+            "venue": "2024 IEEE Biomedical Circuits and Systems Conference (BioCAS)",
             "year": 2024
         }
     },
@@ -465,8 +505,8 @@
     },
     {
         "intents": [
-            "methodology",
-            "background"
+            "background",
+            "methodology"
         ],
         "isInfluential": true,
         "citingPaper": {
@@ -490,8 +530,8 @@
     },
     {
         "intents": [
-            "methodology",
-            "background"
+            "background",
+            "methodology"
         ],
         "isInfluential": true,
         "citingPaper": {
@@ -524,15 +564,12 @@
         }
     },
     {
-        "intents": [
-            "methodology",
-            "background"
-        ],
+        "intents": [],
         "isInfluential": true,
         "citingPaper": {
-            "paperId": "b58f650c9180cbea2623d62095a85fff01c2cc92",
-            "title": "TrIM: Triangular Input Movement Systolic Array for Convolutional Neural Networks - Part I: Dataflow and Analytical Modelling",
-            "venue": "ArXiv",
+            "paperId": "6e7163ea233c92f7daeede344d355a130f886943",
+            "title": "TrIM, Triangular Input Movement Systolic Array for Convolutional Neural Networks: Dataflow and Analytical Modelling",
+            "venue": "",
             "year": 2024
         }
     },
@@ -715,8 +752,8 @@
     },
     {
         "intents": [
-            "methodology",
-            "background"
+            "background",
+            "methodology"
         ],
         "isInfluential": true,
         "citingPaper": {
@@ -893,8 +930,8 @@
     },
     {
         "intents": [
-            "methodology",
-            "background"
+            "background",
+            "methodology"
         ],
         "isInfluential": true,
         "citingPaper": {
@@ -1104,54 +1141,6 @@
             "paperId": "a53f9410dcccefe380b3188d290693c27b3ec707",
             "title": "Co-designing Trusted Execution Environment and Model Encryption for Secure High-Performance DNN Inference on FPGAs",
             "venue": "2024 IEEE International Symposium on Circuits and Systems (ISCAS)",
-            "year": 2024
-        }
-    },
-    {
-        "intents": [
-            "background"
-        ],
-        "isInfluential": false,
-        "citingPaper": {
-            "paperId": "c12a48772b5a932ce5a29ce57b387ff72c95e606",
-            "title": "An SRAM Compute-In-Memory Macro Based on Direct Coupling SAR ADC and DAC Reuse",
-            "venue": "2024 IEEE International Symposium on Circuits and Systems (ISCAS)",
-            "year": 2024
-        }
-    },
-    {
-        "intents": [
-            "background"
-        ],
-        "isInfluential": false,
-        "citingPaper": {
-            "paperId": "2c8db2df02465bfb8af1ff25e5dcd7cbf4857b21",
-            "title": "Enhancing the PE Utilization for Multi-Precision Systolic Array via Optimizing Computation Latency",
-            "venue": "2024 IEEE International Symposium on Circuits and Systems (ISCAS)",
-            "year": 2024
-        }
-    },
-    {
-        "intents": [
-            "background"
-        ],
-        "isInfluential": false,
-        "citingPaper": {
-            "paperId": "513c47cb0185ebb08166f647a5180a866ef0d143",
-            "title": "LauWS: Local Adaptive Unstructured Weight Sparsity of Load Balance for DNN in Near-Data Processing",
-            "venue": "2024 IEEE International Symposium on Circuits and Systems (ISCAS)",
-            "year": 2024
-        }
-    },
-    {
-        "intents": [
-            "methodology"
-        ],
-        "isInfluential": false,
-        "citingPaper": {
-            "paperId": "af4d7efea0b5c9062c2f08e39a6cae10ca2722a9",
-            "title": "Cost-Effective Fault Tolerance for CNNs Using Parameter Vulnerability Based Hardening and Pruning",
-            "venue": "2024 IEEE 30th International Symposium on On-Line Testing and Robust System Design (IOLTS)",
             "year": 2024
         }
     }

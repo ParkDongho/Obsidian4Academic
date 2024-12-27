@@ -8,9 +8,9 @@ from typing import Generator, TypeVar
 import dotenv
 dotenv.load_dotenv()
 
-S2_API_KEY = os.environ.get('S2_API_KEY', '')
-PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
-REFERENCE_INFO_PATH = os.environ.get('REFERENCE_INFO_PATH', '')
+S2_API_KEY = os.environ.get('S2_API_KEY', None)
+PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', None)
+REFERENCE_INFO_PATH = os.environ.get('REFERENCE_INFO_PATH', None)
 
 T = TypeVar('T')
 
