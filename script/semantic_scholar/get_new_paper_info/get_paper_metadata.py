@@ -1,8 +1,3 @@
-#!/usr/bin/env python3
-import dotenv
-
-dotenv.load_dotenv()
-
 import os
 from requests import Session
 from typing import Any, Dict

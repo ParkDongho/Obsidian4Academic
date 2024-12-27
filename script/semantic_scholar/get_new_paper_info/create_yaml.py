@@ -1,7 +1,3 @@
-#!/usr/bin/env python3
-import dotenv
-dotenv.load_dotenv()
-
 from typing import Any, Dict
 import re
 
