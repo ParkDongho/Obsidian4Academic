@@ -10,6 +10,8 @@ import dotenv
 dotenv.load_dotenv()
 
 S2_API_KEY = os.environ.get('S2_API_KEY', '')
+PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
+REFERENCE_INFO_PATH = os.environ.get('REFERENCE_INFO_PATH', '')
 
 T = TypeVar('T')
 
@@ -19,10 +21,10 @@ proxies = {
   'https': 'socks5h://localhost:9050',
 }
 
-def find_missing_citations(json_dir, paper_dir):
-    # Get the list of JSON filenames without the '-citation' and '.json' extensions
+def find_missing_references(json_dir, paper_dir):
+    # Get the list of JSON filenames without the '-reference' and '.json' extensions
     json_files = [
-        f.replace('-citation', '').replace('.json', '')
+        f.replace('-reference', '').replace('.json', '')
         for f in os.listdir(json_dir)
         if f.endswith('.json')
     ]
@@ -43,7 +45,7 @@ def find_missing_citations(json_dir, paper_dir):
 def batched(items: list[T], batch_size: int) -> list[T]:
     return [items[i:i + batch_size] for i in range(0, len(items), batch_size)]
 
-def get_citation_batch(session: Session, paper_id: str, fields: str = 'paperId,title,year,venue,intents,isInfluential', retries=3, backoff_factor=60.0, **kwargs) -> list[dict]:
+def get_reference_batch(session: Session, paper_id: str, fields: str = 'paperId,title,year,venue,intents,isInfluential', retries=3, backoff_factor=60.0, **kwargs) -> list[dict]:
     params = {
         'fields': fields,
         **kwargs,
@@ -55,7 +57,7 @@ def get_citation_batch(session: Session, paper_id: str, fields: str = 'paperId,t
         "X-API-KEY": S2_API_KEY,
     }
 
-    url = f'https://api.semanticscholar.org/graph/v1/paper/{paper_id}/citations'
+    url = f'https://api.semanticscholar.org/graph/v1/paper/{paper_id}/references'
     for attempt in range(retries):
         try:
             with session.get(url, params=params, headers=headers) as response:
@@ -75,64 +77,53 @@ def get_citation_batch(session: Session, paper_id: str, fields: str = 'paperId,t
             time.sleep(backoff_factor * (2 ** attempt))
 
     # If all retries are exhausted
-    raise requests.exceptions.HTTPError(f"Failed to fetch citations after {retries} retries.")
+    raise requests.exceptions.HTTPError(f"Failed to fetch references after {retries} retries.")
 
-def get_citations(paper_id: str, **kwargs) -> Generator[dict, None, None]:
+def get_references(paper_id: str, **kwargs) -> Generator[dict, None, None]:
     with Session() as session:
-        yield from get_citation_batch(session, paper_id, **kwargs)
+        yield from get_reference_batch(session, paper_id, **kwargs)
 
-def fetch_citations(papers, output_dir):
+def fetch_references(papers, output_dir):
     fields = 'paperId,title,year,venue,intents,isInfluential'
 
     for paper_id in papers:
         try:
-            citations = list(get_citations(paper_id, fields=fields))
-            if not citations:
-                print(f'No citations found for paper ID {paper_id}')
+            references = list(get_references(paper_id, fields=fields))
+            if not references:
+                print(f'No references found for paper ID {paper_id}')
                 continue
 
-            output_filename = os.path.join(output_dir, f'{paper_id}-citation.json')
+            output_filename = os.path.join(output_dir, f'{paper_id}-reference.json')
             with open(output_filename, 'w') as jsonfile:
-                json.dump(citations, jsonfile, indent=4)
+                json.dump(references, jsonfile, indent=4)
 
-            print(f'Wrote citations for paper ID {paper_id} to {output_filename}')
+            print(f'Wrote references for paper ID {paper_id} to {output_filename}')
             time.sleep(5)  # To avoid hitting rate limits
         except Exception as e:
-            print(f"Failed to fetch citations for paper ID {paper_id}: {e}")
+            print(f"Failed to fetch references for paper ID {paper_id}: {e}")
 
-def main():
-    parser = argparse.ArgumentParser(description="Find missing citation JSON files and fetch citations.")
-    parser.add_argument(
-        '--citation_info_dir',
-        default='/home/parkdongho/dev/Obsidian4Academic/20_Works/21_Research/1_paper_archive/.semantic_graph/citation/',
-        help="Directory to write the citation JSON files."
-    )
-    parser.add_argument(
-        '--paper_dir',
-        default='/home/parkdongho/dev/Obsidian4Academic/20_Works/21_Research/1_paper_archive/.paper_info/',
-        help="Directory containing the paper files."
-    )
+def get_reference_info():
+    parser = argparse.ArgumentParser(description="Find missing reference JSON files and fetch references.")
     parser.add_argument(
         '--mode',
         choices=['missing', 'all'],
         default='missing',
-        help="Mode to fetch citations: 'missing' fetches only missing ones, 'all' fetches all papers."
+        help="Mode to fetch references: 'missing' fetches only missing ones, 'all' fetches all papers."
     )
-
     args = parser.parse_args()
 
     # Ensure the output directory exists
-    os.makedirs(args.citation_info_dir, exist_ok=True)
+    os.makedirs(REFERENCE_INFO_PATH, exist_ok=True)
 
     # Find missing papers or use all papers based on the mode
-    missing_papers, all_papers = find_missing_citations(args.citation_info_dir, args.paper_dir)
+    missing_papers, all_papers = find_missing_references(REFERENCE_INFO_PATH, PAPER_INFO_PATH)
 
     papers_to_fetch = missing_papers if args.mode == 'missing' else all_papers
 
-    print(f"Fetching citations for {len(papers_to_fetch)} papers in '{args.mode}' mode.")
+    print(f"Fetching references for {len(papers_to_fetch)} papers in '{args.mode}' mode.")
 
-    # Fetch citations for the selected papers
-    fetch_citations(papers_to_fetch, args.citation_info_dir)
+    # Fetch references for the selected papers
+    fetch_references(papers_to_fetch, args.reference_info_dir)
 
 if __name__ == "__main__":
-    main()
+    get_reference_info()

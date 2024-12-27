@@ -37,14 +37,3 @@ def map_ieee_to_semantic(directory, ieee_paper_number):
     return None
 
 
-
-
-# Example usage:
-# directory = "/path/to/your/yaml/files"  # Replace with your directory path
-# ieee_paper_number = "3007787.3001177"  # Replace with your IEEE paper number
-# semantic_id = map_ieee_to_semantic(directory, ieee_paper_number)
-#
-# if semantic_id:
-#     print(f"Semantic Scholar ID for IEEE paper {ieee_paper_number}: {semantic_id}")
-# else:
-#     print(f"Semantic Scholar ID for IEEE paper {ieee_paper_number} could not be found.")

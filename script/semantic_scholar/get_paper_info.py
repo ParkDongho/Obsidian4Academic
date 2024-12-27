@@ -6,6 +6,10 @@ import pandas as pd
 from typing import Any, Dict
 import re
 
+PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
+JOURNAL_LIST_PATH = os.environ.get('JOURNAL_LIST_PATH', '')
+S2_API_KEY = os.environ.get('S2_API_KEY', '')
+
 def create_yaml(metadata: Dict[str, Any], journal_dict, paper_id) -> Dict[str, Any]:
     authors = [author['name'] for author in metadata.get('authors', [])]
     title = metadata.get('title', 'Unknown Title')
@@ -44,7 +48,6 @@ def clean_abstract(abstract: str) -> str:
     # "$\\time $"와 같은 패턴에서 닫는 $ 이전의 공백 제거
     return re.sub(r'(\\\S+)\s+\$', r'\1$', abstract)
 
-S2_API_KEY = os.environ.get('S2_API_KEY', '')
 
 
 def get_paper_metadata(session: Session, paper_id: str,
@@ -88,21 +91,19 @@ def get_paper_info(s2id_file, journal_dict):
         time.sleep(3)
         print(f'Wrote YAML for paper ID {paper_id} to {output_filename}')
 
-def save_paper_info(output_dir: str, s2id_file: str, csv_file: str) -> None:
+def save_paper_info(s2id_file: str, csv_file: str = JOURNAL_LIST_PATH) -> None:
     # Load the journal dictionary from the CSV file
     journal_dict = load_journal_dict(csv_file)
 
     # Create output directory if it doesn't exist
-    os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(PAPER_INFO_PATH, exist_ok=True)
 
     # Change working directory to output directory
-    os.chdir(output_dir)
+    os.chdir(PAPER_INFO_PATH)
 
     get_paper_info(s2id_file, journal_dict)
 
 if __name__ == "__main__":
     save_paper_info(
-        '/home/parkdongho/dev/Obsidian4Academic/20_Works/21_Research/1_paper_archive/.paper_info/',
         '/home/parkdongho/dev/Obsidian4Academic/20_Works/21_Research/1_paper_archive/new_paper_list.txt',
-        '/home/parkdongho/dev/Obsidian4Academic/20_Works/21_Research/1_paper_archive/journal_list.csv'
     )
