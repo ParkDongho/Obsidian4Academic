@@ -5,7 +5,6 @@ import yaml
 
 from script.semantic_scholar.get_new_paper_info import load_journal_dict, create_yaml, get_paper_metadata
 
-S2_API_KEY = os.environ.get('S2_API_KEY', '')
 
 def get_new_paper_info(s2id_file, journal_dict) -> None:
     with open(s2id_file, 'r') as s2id_file:
@@ -48,3 +47,4 @@ if __name__ == "__main__":
         '/home/parkdongho/dev/Obsidian4Academic/20_Works/21_Research/1_paper_archive/new_paper_list.txt',
         '/home/parkdongho/dev/Obsidian4Academic/20_Works/21_Research/1_paper_archive/journal_list.csv'
     )
+

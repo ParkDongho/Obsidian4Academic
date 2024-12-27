@@ -18,3 +18,4 @@ def get_paper_metadata(session: Session, paper_id: str,
     with session.get(url, params=params, headers=headers) as response:
         response.raise_for_status()
         return response.json()
+

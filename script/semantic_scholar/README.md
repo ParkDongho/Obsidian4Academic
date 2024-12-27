@@ -4,7 +4,7 @@
 ## 새로운 논문 정보 가져오기 
 
 ```bash
-python3 get_new_paper_info.py --output-dir ./.paper_info/ --s2id-file ./s2id.txt --csv-file ./journal_list.csv
+python3 get_new_paper_info2.py --output-dir ./.paper_info/ --s2id-file ./s2id.txt --csv-file ./journal_list.csv
 ```
 
 ```
