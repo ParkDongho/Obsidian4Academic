@@ -1,0 +1,28 @@
+abstract: ': A novel approach for design of low-power approximate multipliers by leveraging
+  Long Short-Term Memory (LSTM) networks within a deep learning (DL)-based framework.
+  Our proposed architecture, referred to as the DL -Based Approximate Multiplier (DLAM),
+  exploits the sequence-to-sequence learning capabilities of LSTMs to enhance the
+  efficiency of approximate multiplication in terms of both accuracy and power consumption.
+  The DLAM model is trained on a diverse dataset, incorporating various input patterns
+  and corresponding approximate multiplication outcomes. Through the integration of
+  LSTM units, the model captures long-range dependencies within the input sequences,
+  enabling more accurate predictions of approximate multiplication results. The trained
+  DLAM exhibits superior performance in terms of both precision and energy efficiency
+  when compared to traditional approximate multiplier designs. Furthermore, we explore
+  optimization techniques to minimize power consumption without compromising the accuracy
+  of multiplication results. Our test findings show that the DLAM accomplishes a significant
+  reduction in power consumption while maintaining competitive levels of accuracy,
+  making it a promising candidate for low-power applications in energy-constrained
+  environments .'
+authors: []
+citation_count: 0
+date: null
+external_ids:
+  ACM: 1
+  CorpusId: 273755383
+  IEEE: 1
+  SEMANTIC: cfa4d11764c89bb47f253df23c51a0e685c90e9c
+title: Efficient Deep Learning Approaches For Low-Power Approximate Multiplier Architectures
+venue: ''
+venue_short: Unknown Venue
+year: null
