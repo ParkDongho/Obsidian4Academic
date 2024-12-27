@@ -1,22 +1,26 @@
-def search_from_database(key, value, result_key):
+import os
+import yaml
+
+def search_from_database(key, value, result_key, database_path):
     """
     Search for a key-value pair in the YAML files.
     """
-    # Step 1: search for the key-value pair in the YAML files
-    # Step 1.1: Load the YAML files
-    # Step 1.2: Search for the key-value pair
-    # Step 1.3: If found, return the Semantic Scholar ID
-    # Step 1.4: If not found, return None
-
-    return semantic_id
-
-
+    for filename in os.listdir(database_path):
+        if filename.endswith(".yaml"):
+            file_path = os.path.join(database_path, filename)
+            with open(file_path, 'r') as file:
+                content = yaml.safe_load(file)
+                if 'external_ids' in content and content['external_ids'].get(key) == value:
+                    return content['external_ids'].get(result_key)
+    return None
 
 
 if __name__ == "__main__":
-    key = "ieee_paper_number"
-    value = "3007787"
-    semantic_id = search_from_database(key, value)
+    key = "IEEE"
+    value = "8686088"
+    result_key = "SEMANTIC"
+    database_path = "/home/parkdongho/dev/Obsidian4Academic/20_Works/21_Research/1_paper_archive/.paper_info"
+    semantic_id = search_from_database(key, value, result_key, database_path)
 
     if semantic_id:
         print(f"Semantic Scholar ID for {key} {value}: {semantic_id}")

@@ -1,0 +1,1 @@
+export PYTHONPATH="/home/parkdongho/dev/Obsidian4Academic:$PYTHONPATH"
