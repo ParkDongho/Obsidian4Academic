@@ -6,7 +6,6 @@ import requests
 from requests import Session
 from typing import Generator, TypeVar
 import dotenv
-
 dotenv.load_dotenv()
 
 S2_API_KEY = os.environ.get('S2_API_KEY', '')
@@ -14,12 +13,6 @@ PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
 CITATION_INFO_PATH = os.environ.get('CITATION_INFO_PATH', '')
 
 T = TypeVar('T')
-
-# Tor 프록시 설정 (선택사항)
-proxies = {
-  'http': 'socks5h://localhost:9050',
-  'https': 'socks5h://localhost:9050',
-}
 
 def find_missing_citations(json_dir, paper_dir):
     # Get the list of JSON filenames without the '-citation' and '.json' extensions
@@ -123,7 +116,7 @@ def get_citation_info():
     print(f"Fetching citations for {len(papers_to_fetch)} papers in '{args.mode}' mode.")
 
     # Fetch citations for the selected papers
-    fetch_citations(papers_to_fetch, args.citation_info_dir)
+    fetch_citations(papers_to_fetch, CITATION_INFO_PATH)
 
 if __name__ == "__main__":
     get_citation_info()

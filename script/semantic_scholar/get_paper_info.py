@@ -5,6 +5,8 @@ import yaml
 import pandas as pd
 from typing import Any, Dict
 import re
+import dotenv
+dotenv.load_dotenv()
 
 PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
 JOURNAL_LIST_PATH = os.environ.get('JOURNAL_LIST_PATH', '')

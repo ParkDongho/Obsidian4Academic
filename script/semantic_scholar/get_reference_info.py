@@ -6,7 +6,6 @@ import requests
 from requests import Session
 from typing import Generator, TypeVar
 import dotenv
-
 dotenv.load_dotenv()
 
 S2_API_KEY = os.environ.get('S2_API_KEY', '')
@@ -14,12 +13,6 @@ PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
 REFERENCE_INFO_PATH = os.environ.get('REFERENCE_INFO_PATH', '')
 
 T = TypeVar('T')
-
-# Tor 프록시 설정 (선택사항)
-proxies = {
-  'http': 'socks5h://localhost:9050',
-  'https': 'socks5h://localhost:9050',
-}
 
 def find_missing_references(json_dir, paper_dir):
     # Get the list of JSON filenames without the '-reference' and '.json' extensions
@@ -123,7 +116,7 @@ def get_reference_info():
     print(f"Fetching references for {len(papers_to_fetch)} papers in '{args.mode}' mode.")
 
     # Fetch references for the selected papers
-    fetch_references(papers_to_fetch, args.reference_info_dir)
+    fetch_references(papers_to_fetch, REFERENCE_INFO_PATH)
 
 if __name__ == "__main__":
     get_reference_info()

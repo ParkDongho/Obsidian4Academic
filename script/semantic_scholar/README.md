@@ -4,7 +4,7 @@
 ## 새로운 논문 정보 가져오기 
 
 ```bash
-python3 get_new_paper_info.py
+python3 get_paper_info.py
 ```
 
 

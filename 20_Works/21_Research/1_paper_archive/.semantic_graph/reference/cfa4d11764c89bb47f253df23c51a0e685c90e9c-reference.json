@@ -1,0 +1,98 @@
+[
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "e2a2d5415174cec72243a4537be0ce0a68605973",
+            "title": "Recent advances in use of bio-inspired jellyfish search algorithm for solving optimization problems",
+            "venue": "Scientific Reports",
+            "year": 2022
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "f5b1faee4b86f6b28991c0b775d71d41d9debd07",
+            "title": "Power and Area Efficient Cascaded Effectless GDI Approximate Adder for Accelerating Multimedia Applications Using Deep Learning Model",
+            "venue": "Computational intelligence and neuroscience",
+            "year": 2022
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "6e445400471d1b336df53d327e5eb87db9521c37",
+            "title": "An Overview of Signal Processing Techniques for Joint Communication and Radar Sensing",
+            "venue": "IEEE Journal of Selected Topics in Signal Processing",
+            "year": 2021
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "fe9dbbca66231113d220202f65011615c6df2cb8",
+            "title": "Comparison and Extension of Approximate 4-2 Compressors for Low-Power Approximate Multipliers",
+            "venue": "IEEE Transactions on Circuits and Systems I: Regular Papers",
+            "year": 2020
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "468aa95cfdf66da9fc3dc6a1b9042a52a6ec99c6",
+            "title": "DDSP: Differentiable Digital Signal Processing",
+            "venue": "ICLR",
+            "year": 2020
+        }
+    },
+    {
+        "intents": [
+            "methodology"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "c0db083c2e3b862824f9d3eee6908ffce0bfb8fd",
+            "title": "Understanding LSTM - a tutorial into Long Short-Term Memory Recurrent Neural Networks",
+            "venue": "ArXiv",
+            "year": 2019
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "891f02495afdfc98aeb71fd5241b7fbf47e7cb68",
+            "title": "Design of a Low-power and Small-area Approximate Multiplier using First the Approximate and then the Accurate Compression Method",
+            "venue": "ACM Great Lakes Symposium on VLSI",
+            "year": 2019
+        }
+    },
+    {
+        "intents": [
+            "background"
+        ],
+        "isInfluential": false,
+        "citedPaper": {
+            "paperId": "f466a6319c59095bacbc0019199b7ca16bdf1134",
+            "title": "An Optimized Deep-Learning-Based Low Power Approximate Multiplier Design",
+            "venue": "Comput. Syst. Sci. Eng.",
+            "year": null
+        }
+    }
+]
