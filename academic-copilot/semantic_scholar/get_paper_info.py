@@ -6,7 +6,8 @@ import pandas as pd
 from typing import Any, Dict
 import re
 import dotenv
-import requests
+
+from semantic_scholar.get_journal_id import get_journal_id_from_doi
 
 dotenv.load_dotenv()
 
@@ -14,54 +15,7 @@ PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
 JOURNAL_LIST_PATH = os.environ.get('JOURNAL_LIST_PATH', '')
 S2_API_KEY = os.environ.get('S2_API_KEY', '')
 
-
-def get_redirected_url(doi):
-    """
-    DOI를 사용해 최종 리다이렉션된 URL을 반환합니다.
-    """
-    base_url = "https://doi.org/"
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-    }
-    try:
-        response = requests.get(base_url + doi, allow_redirects=True, timeout=10, headers=headers)
-        response.raise_for_status()
-        return response.url
-    except requests.exceptions.RequestException as e:
-        print(f"Error accessing DOI: {e}")
-        return None
-
-
-def identify_source_and_id(url):
-    """
-    URL에서 출처와 DOI 또는 문서 ID를 추출합니다.
-    """
-    if "ieee.org" in url:
-        source = "IEEE"
-        match = re.search(r"/document/(\d+)", url)
-        document_id = match.group(1) if match else "Unknown"
-    elif "dl.acm.org" in url:
-        source = "ACM"
-        match = re.search(r"/doi/(10\.\d{4,}/.+)", url)
-        document_id = match.group(1) if match else "Unknown"
-    else:
-        source = "Other"
-        document_id = "Unknown"
-    return source, document_id
-
-def get_journal_id_from_doi(doi):
-    """
-    사용자로부터 DOI 입력을 받고 결과를 출력합니다.
-    """
-    redirected_url = get_redirected_url(doi)
-    if redirected_url:
-        source, document_id = identify_source_and_id(redirected_url)
-        return source, document_id
-    else:
-        print("Failed to retrieve URL.")
-        return None, None
-
-def create_yaml(metadata: Dict[str, Any], paper_id) -> Dict[str, Any]:
+def create_yaml(metadata, paper_id):
     authors = [author['name'] for author in metadata.get('authors', [])]
     title = metadata.get('title', 'Unknown Title')
     date = metadata.get('publicationDate', 'Unknown Date')
@@ -137,7 +91,7 @@ def load_journal_list(csv_file_path):
     df = pd.read_csv(csv_file_path)
     return dict(zip(df['journal'], df['name_short']))
 
-def download_paper_info(semantic_id: str) -> None:
+def download_paper_info(semantic_id):
     fields = 'title,authors,year,venue,abstract,citationCount,externalIds,publicationDate'
     with Session() as session:
         paper_metadata = get_paper_metadata(session, semantic_id, fields=fields)
@@ -176,7 +130,7 @@ def get_paper_info(s2id_file):
         time.sleep(3)
         print(f'Wrote YAML for paper ID {paper_id} to {output_filename}')
 
-def save_paper_info(s2id_file: str) -> None:
+def save_paper_info(s2id_file):
     # Create output directory if it doesn't exist
     os.makedirs(PAPER_INFO_PATH, exist_ok=True)
 

@@ -161,7 +161,7 @@ def parseParagraph(paragraph, ieee_paper_info):
                 elif isinstance(paragrph_element, Tag):
                     # inline formula
                     if paragrph_element.name == "inline-formula":
-                        latex_code = paragrph_element.find('script', {'type': 'math/tex'}).text
+                        latex_code = paragrph_element.find('academic-copilot', {'type': 'math/tex'}).text
                         latex_code = latex_code.replace("\n", "")
                         paragraph_contetns_list.append(f"${latex_code}$")
 
