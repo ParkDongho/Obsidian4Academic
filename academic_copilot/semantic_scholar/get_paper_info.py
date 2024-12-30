@@ -38,7 +38,7 @@ def create_yaml(metadata, paper_id):
         journal_key = get_journal_id_from_doi(doi)
         if journal_key[0] == "IEEE":
             external_ids['IEEE'] = journal_key[1]
-        elif journal_key[0] == "ACM" in doi:
+        elif journal_key[0] == "ACM":
             external_ids['ACM'] = journal_key[1]
 
 
@@ -92,7 +92,7 @@ def load_journal_list(csv_file_path):
     df = pd.read_csv(csv_file_path)
     return dict(zip(df['journal'], df['name_short']))
 
-def download_paper_info(semantic_id):
+def download_paper_info(semantic_id, ieee_paper_id=None, acm_paper_id=None, doi_id=None):
     # Change working directory to output directory
     PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
     os.chdir(PAPER_INFO_PATH)
@@ -106,6 +106,13 @@ def download_paper_info(semantic_id):
         return None
 
     yaml_content = create_yaml(paper_metadata, semantic_id)
+    if ieee_paper_id:
+        yaml_content['external_ids']['IEEE'] = ieee_paper_id
+    if acm_paper_id:
+        yaml_content['external_ids']['ACM'] = acm_paper_id
+    if doi_id:
+        yaml_content['external_ids']['DOI'] = doi_id
+
     output_filename = f'{semantic_id}.yaml'
     with open(output_filename, 'w') as yamlfile:
         yaml.dump(yaml_content, yamlfile, default_flow_style=False, allow_unicode=True)
@@ -154,10 +161,13 @@ def save_paper_info(s2id_file):
 
     get_paper_info(s2id_file)
 
-def save_paper_info_from_id(semantic_id):
+def save_paper_info_from_id(semantic_id, ieee_paper_id=None, acm_paper_id=None, doi_id=None):
     PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
     os.makedirs(PAPER_INFO_PATH, exist_ok=True)
-    download_paper_info(semantic_id)
+    download_paper_info(semantic_id,
+                        ieee_paper_id=ieee_paper_id,
+                        acm_paper_id=acm_paper_id,
+                        doi_id=doi_id)
 
 if __name__ == "__main__":
     save_paper_info(NEW_PAPER_LIST)

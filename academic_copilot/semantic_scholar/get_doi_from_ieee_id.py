@@ -5,10 +5,10 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-def get_doi_from_ieee_id(document_number, driver):
+def get_doi_from_ieee_id(ieee_number, driver):
     try:
         # IEEE 문서 URL
-        url = f"https://ieeexplore.ieee.org/document/{document_number}"
+        url = f"https://ieeexplore.ieee.org/document/{ieee_number}"
         driver.get(url)
 
         # DOI 정보 가져오기

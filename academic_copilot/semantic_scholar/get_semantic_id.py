@@ -15,12 +15,13 @@ def get_semantic_id_from_doi(doi_id):
         "DOI", doi_id,
         "SEMANTIC", PAPER_INFO_PATH)
 
-    # Step 2: if not found, fetch DOI and Semantic Scholar ID
+    # Step 2: if not found, fetch Semantic Scholar ID from DOI
     if not semantic_id:
-        semantic_id = get_semantic_id_from_doi(doi)
-        # Step 2.1: Create new YAML file with this information
-        save_paper_info_from_id(semantic_id)
-
+        url = f"https://api.semanticscholar.org/graph/v1/paper/DOI:{doi_id}?fields=paperId"
+        response = requests.get(url)
+        if response.status_code == 200:
+            return response.json().get('paperId', None)
+        return None
     return semantic_id
 
 
@@ -38,7 +39,7 @@ def get_semantic_id_from_ieee_id(ieee_paper_number, driver):
         doi = get_doi_from_ieee_id(ieee_paper_number, driver)
         semantic_id = get_semantic_id_from_doi(doi)
         # Step 2.1: Create new YAML file with this information
-        save_paper_info_from_id(semantic_id)
+        save_paper_info_from_id(semantic_id, ieee_paper_id=ieee_paper_number, doi_id=doi)
 
     return semantic_id
 
