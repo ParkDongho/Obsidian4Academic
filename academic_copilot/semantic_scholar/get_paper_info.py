@@ -10,7 +10,6 @@ import dotenv
 from academic_copilot.semantic_scholar.get_academic_id import get_journal_id_from_doi
 
 dotenv.load_dotenv()
-
 PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
 JOURNAL_LIST_PATH = os.environ.get('JOURNAL_LIST_PATH', '')
 S2_API_KEY = os.environ.get('S2_API_KEY', '')
