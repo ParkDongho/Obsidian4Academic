@@ -7,7 +7,7 @@ from typing import Any, Dict
 import re
 import dotenv
 
-from semantic_scholar.get_journal_id import get_journal_id_from_doi
+from academic_copilot.semantic_scholar.get_journal_id import get_journal_id_from_doi
 
 dotenv.load_dotenv()
 
@@ -93,6 +93,10 @@ def load_journal_list(csv_file_path):
     return dict(zip(df['journal'], df['name_short']))
 
 def download_paper_info(semantic_id):
+    # Change working directory to output directory
+    PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
+    os.chdir(PAPER_INFO_PATH)
+
     fields = 'title,authors,year,venue,abstract,citationCount,externalIds,publicationDate'
     with Session() as session:
         paper_metadata = get_paper_metadata(session, semantic_id, fields=fields)
@@ -112,6 +116,15 @@ def download_paper_info(semantic_id):
 
 
 def get_paper_info(s2id_file):
+    """
+    Get paper metadata from Semantic Scholar API and save as YAML files.
+    :param s2id_file: paper_list 가 있는 파일 경로
+    :return:
+    """
+    # Change working directory to output directory
+    PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
+    os.chdir(PAPER_INFO_PATH)
+
     with open(s2id_file, 'r') as s2id_file:
         s2ids = [line.strip() for line in s2id_file.readlines()]
     fields = 'title,authors,year,venue,abstract,citationCount,externalIds,publicationDate'
@@ -131,14 +144,20 @@ def get_paper_info(s2id_file):
         time.sleep(3)
         print(f'Wrote YAML for paper ID {paper_id} to {output_filename}')
 
+
+
+
 def save_paper_info(s2id_file):
+    PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
     # Create output directory if it doesn't exist
     os.makedirs(PAPER_INFO_PATH, exist_ok=True)
 
-    # Change working directory to output directory
-    os.chdir(PAPER_INFO_PATH)
-
     get_paper_info(s2id_file)
+
+def save_paper_info_from_id(semantic_id):
+    PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
+    os.makedirs(PAPER_INFO_PATH, exist_ok=True)
+    download_paper_info(semantic_id)
 
 if __name__ == "__main__":
     save_paper_info(NEW_PAPER_LIST)

@@ -15,6 +15,8 @@ from selenium import webdriver
 import time
 
 from bs4 import Tag, NavigableString
+from academic_copilot.semantic_scholar.get_semantic_id import get_semantic_id_from_ieee_id
+from academic_copilot.semantic_scholar.get_semantic_id import get_semantic_id_from_doi
 
 
 def convert_to_markdown_link(title):
@@ -322,16 +324,26 @@ def extract_references(driver, ieee_paper_info):
             # 링크들
             links = {}
             link_elements = ref.select(".ref-link a")
+            semantic_id = "None"
             for link in link_elements:
                 link_text = link.text.strip()
                 href = link.get("href")
                 if link_text and href:
                     links[link_text] = href
 
+                if link_text == "CrossRef":
+                    semantic_id = get_semantic_id_from_doi(href.replace("https://doi.org/", ""))
+                elif link_text == "View Article":
+                    ieee_id = href.replace("/document/", "")
+                    print(ieee_id)
+                    semantic_id = get_semantic_id_from_ieee_id(ieee_id, driver)
+
+
             reference_list.append({
                 "number": number,
                 "title": title,
-                "links": links
+                "links": links,
+                "semantic": semantic_id
             })
         except Exception as e:
             print(f"Error processing reference: {e}")

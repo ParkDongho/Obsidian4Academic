@@ -1,7 +1,7 @@
 import requests
-import get_doi_from_ieee_id
-from search_from_database import search_from_database
-from get_paper_info import save_paper_info
+from academic_copilot.semantic_scholar.get_doi_from_ieee_id import get_doi_from_ieee_id
+from academic_copilot.semantic_scholar.search_from_database import search_from_database
+from academic_copilot.semantic_scholar.get_paper_info import save_paper_info, save_paper_info_from_id
 
 import os
 PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
@@ -38,7 +38,7 @@ def get_semantic_id_from_ieee_id(ieee_paper_number, driver):
         doi = get_doi_from_ieee_id(ieee_paper_number, driver)
         semantic_id = get_semantic_id_from_doi(doi)
         # Step 2.1: Create new YAML file with this information
-        save_paper_info(semantic_id)
+        save_paper_info_from_id(semantic_id)
 
     return semantic_id
 
@@ -51,4 +51,3 @@ if __name__ == "__main__":
         print(f"Semantic Scholar ID for DOI {doi}: {semantic_id}")
     else:
         print(f"Semantic Scholar ID for DOI {doi} could not be found.")
-
