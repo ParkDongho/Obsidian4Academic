@@ -16,8 +16,9 @@ CITATION_INFO_PATH = os.environ.get('CITATION_INFO_PATH', '')
 
 def get_redirected_url(doi):
     """
-    DOI를 사용해 최종 리다이렉션된 URL을 반환합니다.
+    DOI를 사용해 최종 리다이렉션된 URL을 반환.
     """
+
     base_url = "https://doi.org/"
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
@@ -50,7 +51,12 @@ def identify_source_and_id(url):
 
 def get_journal_id_from_doi(doi):
     """
-    사용자로부터 DOI 입력을 받고 결과를 출력합니다.
+    doi 입력을 받고 Journal Key/ID 쌍을 추출합니다.
+
+    **Example :**
+
+    - doi -> ("IEEE", "12345678")
+    - doi -> ("ACM", doi)
     """
     redirected_url = get_redirected_url(doi)
     if redirected_url:
@@ -59,6 +65,7 @@ def get_journal_id_from_doi(doi):
     else:
         print("Failed to retrieve URL.")
         return None, None
+
 
 def get_semantic_id_from_doi(doi_id, ieee_paper_id=None, acm_paper_id=None):
     """
@@ -128,10 +135,19 @@ def get_semantic_id_from_ieee_id(ieee_paper_id, driver, acm_paper_id=None):
 
     return semantic_id
 
-def get_doi_from_ieee_id(ieee_number, driver):
+def get_doi_from_ieee_id(ieee_id, driver):
+    """
+    IEEE 문서 번호를 사용하여 DOI를 가져옵니다.
+
+    selenium driver를 사용하여 ieeexplore에서 doi를 크롤링합니다.
+
+    :param ieee_id: ieee document number
+    :param driver: selenium driver
+    :return: doi_id
+    """
     try:
         # IEEE 문서 URL
-        url = f"https://ieeexplore.ieee.org/document/{ieee_number}"
+        url = f"https://ieeexplore.ieee.org/document/{ieee_id}"
         driver.get(url)
 
         # DOI 정보 가져오기
@@ -146,3 +162,4 @@ def get_doi_from_ieee_id(ieee_number, driver):
 
     except Exception as e:
         return f"오류 발생: {e}"
+
