@@ -3,9 +3,9 @@ import re
 import os
 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
+# from selenium.webdriver.chrome.service import Service
+# from selenium.webdriver.chrome.options import Options
+# from webdriver_manager.chrome import ChromeDriverManager
 
 from academic_copilot.semantic_scholar.search_from_database import search_from_database
 from academic_copilot.semantic_scholar.get_paper_info import save_paper_info_from_semantic_id
@@ -136,12 +136,13 @@ def get_doi_from_ieee_id(ieee_number, driver):
 
         # DOI 정보 가져오기
         doi_element = driver.find_element(By.CSS_SELECTOR,
-                                          "#xplMainContentLandmark > div > xpl-document-details > div > div.document-main.global-content-width-w-rr > "
-                                          "div > div.document-main-content-container.col-19-24 > section > div.document-main-left-trail-content > "
-                                          "div > xpl-document-abstract > section > div.abstract-desktop-div.hide-mobile.text-base-md-lh > "
-                                          "div.row.g-0.u-pt-1 > div:nth-child(2) > div.u-pb-1.stats-document-abstract-doi > a"
-                                          )
+            "#xplMainContentLandmark > div > xpl-document-details > div > div.document-main.global-content-width-w-rr > "
+            "div > div.document-main-content-container.col-19-24 > section > div.document-main-left-trail-content > "
+            "div > xpl-document-abstract > section > div.abstract-desktop-div.hide-mobile.text-base-md-lh > "
+            "div.row.g-0.u-pt-1 > div:nth-child(2) > div.u-pb-1.stats-document-abstract-doi > a")
+
         doi_text = doi_element.accessible_name # DOI 텍스트 추출
         return doi_text
+
     except Exception as e:
         return f"오류 발생: {e}"
