@@ -11,10 +11,14 @@ def get_semantic_id_from_doi(doi_id, ieee_paper_id=None, acm_paper_id=None):
     """
     Get the Semantic **Scholar ID** using **DOI**. `(DOI -> Semantic Scholar ID)`
 
-    - **Step 1:** search for the DOI number in the YAML files
-    - **Step 2:** if not found, fetch Semantic Scholar ID from DOI
+    - Step 1: search for the DOI number in the YAML files
+    - Step 2: if not found, fetch Semantic Scholar ID from DOI
+    - Step 2.1: Create new YAML file with this information
 
-        * Step 2.1: Create new YAML file with this information
+    :param doi_id: DOI number
+    :param ieee_paper_id: IEEE paper number
+    :param acm_paper_id: ACM paper number
+    :returns: Semantic Scholar ID
     """
 
     # Step 1: search for the DOI number in the YAML files
@@ -27,17 +31,18 @@ def get_semantic_id_from_doi(doi_id, ieee_paper_id=None, acm_paper_id=None):
         url = f"https://api.semanticscholar.org/graph/v1/paper/DOI:{doi_id}?fields=paperId"
         response = requests.get(url)
 
-        # Step 2의 결과가 있을 경우
         if response.status_code == 200:
             semantic_id = response.json().get('paperId', None)
             # Step 2.1: Create new YAML file with this information
             save_paper_info_from_id(semantic_id, ieee_paper_id=ieee_paper_id, acm_paper_id=acm_paper_id, doi_id=doi)
+
+            # return : Step 2의 결과가 있을 경우
             return semantic_id
 
-        # Step 2의 결과가 없을 경우
+        # return : Step 2의 결과가 없을 경우
         return None
 
-    # Step 1(database 검색)의 결과가 있을 경우
+    # return : Step 1(database 검색)의 결과가 있을 경우
     return semantic_id
 
 
@@ -70,3 +75,4 @@ if __name__ == "__main__":
         print(f"Semantic Scholar ID for DOI {doi}: {semantic_id}")
     else:
         print(f"Semantic Scholar ID for DOI {doi} could not be found.")
+
