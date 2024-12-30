@@ -1,12 +1,12 @@
 import requests
-from semantic_scholar import get_doi_from_ieee_id
-from semantic_scholar.search_from_database import search_from_database
-from semantic_scholar.get_paper_info import save_paper_info
+import get_doi_from_ieee_id
+from search_from_database import search_from_database
+from get_paper_info import save_paper_info
 
 import os
 PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
 
-def get_semantic_scholar_id_from_doi(doi_id):
+def get_semantic_id_from_doi(doi_id):
     """
     Get the Semantic Scholar ID using DOI.
     """
@@ -36,7 +36,7 @@ def get_semantic_id_from_ieee_id(ieee_paper_number, driver):
     # Step 2: if not found, fetch DOI and Semantic Scholar ID
     if not semantic_id:
         doi = get_doi_from_ieee_id(ieee_paper_number, driver)
-        semantic_id = get_semantic_scholar_id_from_doi(doi)
+        semantic_id = get_semantic_id_from_doi(doi)
         # Step 2.1: Create new YAML file with this information
         save_paper_info(semantic_id)
 
@@ -46,7 +46,7 @@ def get_semantic_id_from_ieee_id(ieee_paper_number, driver):
 
 if __name__ == "__main__":
     doi = "10.1109/JSSC.2016.2616357"
-    semantic_id = get_semantic_scholar_id_from_doi(doi)
+    semantic_id = get_semantic_id_from_doi(doi)
     if semantic_id:
         print(f"Semantic Scholar ID for DOI {doi}: {semantic_id}")
     else:

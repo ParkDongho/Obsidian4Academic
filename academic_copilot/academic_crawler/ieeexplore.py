@@ -6,9 +6,11 @@ import requests
 import argparse
 import re
 
-from docutils.nodes import caption
-from mistune import markdown
-from orca.punctuation_settings import section
+# from docutils.nodes import caption
+# from mistune import markdown
+# from orca.punctuation_settings import section
+
+
 from selenium import webdriver
 import time
 
@@ -337,7 +339,7 @@ def extract_references(driver, ieee_paper_info):
     ieee_paper_info['reference_info'] = reference_list
     return ieee_paper_info
 
-def main(ieee_paper_id = 7738524,
+def get_ieee_paper(ieee_paper_id = 7738524,
          output_md_path = 'test/eyeriss.md',
          output_img_dir = "test/img",
          relative_img_dir = "img",
@@ -387,5 +389,5 @@ if __name__ == "__main__":
     parser.add_argument('--paper_info_path', type=str, default='test/paper_info.json', help='Paper Info JSON File Path')
     args = parser.parse_args()
 
-    main(args.ieee_paper_id, args.output_md_path, args.output_img_dir, args.relative_img_dir, args.paper_info_path)
+    get_ieee_paper(args.ieee_paper_id, args.output_md_path, args.output_img_dir, args.relative_img_dir, args.paper_info_path)
 
