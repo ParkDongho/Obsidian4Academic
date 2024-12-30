@@ -161,7 +161,7 @@ def save_paper_info(s2id_file):
 
     get_paper_info(s2id_file)
 
-def save_paper_info_from_id(semantic_id, ieee_paper_id=None, acm_paper_id=None, doi_id=None):
+def save_paper_info_from_semantic_id(semantic_id, ieee_paper_id=None, acm_paper_id=None, doi_id=None):
     PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
     os.makedirs(PAPER_INFO_PATH, exist_ok=True)
     download_paper_info(semantic_id,

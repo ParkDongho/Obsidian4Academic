@@ -1,10 +1,18 @@
 import os
 import yaml
 
-def search_from_database(key, value, result_key, database_path):
+
+PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
+
+
+def search_from_database(key, value, result_key, database_path=None):
     """
     Search for a key-value pair in the YAML files.
     """
+
+    if database_path is None:
+        database_path = PAPER_INFO_PATH
+
     for filename in os.listdir(database_path):
         if filename.endswith(".yaml"):
             file_path = os.path.join(database_path, filename)
@@ -19,8 +27,7 @@ if __name__ == "__main__":
     key = "IEEE"
     value = "8686088"
     result_key = "SEMANTIC"
-    database_path = "/20_Works/21_Research/1_paper_archive/.paper_info"
-    semantic_id = search_from_database(key, value, result_key, database_path)
+    semantic_id = search_from_database(key, value, result_key)
 
     if semantic_id:
         print(f"Semantic Scholar ID for {key} {value}: {semantic_id}")
