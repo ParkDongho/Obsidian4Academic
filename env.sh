@@ -1,5 +1,4 @@
 export PYTHONPATH="/home/parkdongho/dev/Obsidian4Academic:$PYTHONPATH"
-
 export VAULT_PATH="/home/parkdongho/dev/Obsidian4Academic"
 
 # paper-archive
@@ -10,5 +9,5 @@ export REFERENCE_INFO_PATH="${PAPER_ARCHIVE_PATH}/.semantic_graph/reference"
 export CITATION_INFO_PATH="${PAPER_ARCHIVE_PATH}/.semantic_graph/citation"
 export JOURNAL_LIST_PATH="${PAPER_ARCHIVE_PATH}/journal_list.csv"
 
-source ~/.semanticscholar/setup.sh
-source ~/.openai/settings.sh
+source "$(HOME)/.semanticscholar/setup.sh"
+source "$(HOME)/.openai/settings.sh"
