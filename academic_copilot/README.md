@@ -22,11 +22,12 @@
   - **get_biblio_info**
     -[x] get_citation_info.py : 
     -[x] get_reference_info.py : 
-  - **get_academic_id**
-    -[x] get_semantic_id.py : 
-    -[x] get_journal_id.py : 
-    -[x] get_doi_from_ieee_id.py : 
-  - **search_from_database**
-    -[x] search_from_database.py :
+  - **get_academic_id.py**
+    -[x] `get_semantic_id_from_doi()` : 
+    -[x] `get_semantic_id_from_ieee_id()` : 
+    -[x] `get_journal_id_from_doi()` : 
+    -[x] `get_doi_from_ieee_id(ieee_id, driver) -> doi_id` : 
+  - **academic_database**
+    -[x] `search_from_database(key, value, result_key) -> result_value` : 
 
 

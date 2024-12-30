@@ -5,14 +5,20 @@ import yaml
 PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
 
 
-def search_from_database(key, value, result_key, database_path=None):
+def search_from_database(key, value, result_key):
     """
     Search for a key-value pair in the YAML files.
+      search_from_database(key, value, result_key) -> result_value
+
+
+    **Example:**
+
+    - `search_from_database("IEEE", "8686088", "SEMANTIC") -> "d3b8b9e6b3"`
+    - `search_from_database("DOI", "10.1109/ACCESS.2019.2920679", "SEMANTIC") -> "d3b8b9e6b3"`
+
     """
 
-    if database_path is None:
-        database_path = PAPER_INFO_PATH
-
+    database_path = PAPER_INFO_PATH
     for filename in os.listdir(database_path):
         if filename.endswith(".yaml"):
             file_path = os.path.join(database_path, filename)

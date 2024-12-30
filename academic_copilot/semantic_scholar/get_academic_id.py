@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 # from selenium.webdriver.chrome.options import Options
 # from webdriver_manager.chrome import ChromeDriverManager
 
-from academic_copilot.semantic_scholar.search_from_database import search_from_database
+from academic_copilot.semantic_scholar.academic_database import search_from_database
 from academic_copilot.semantic_scholar.get_paper_info import save_paper_info_from_semantic_id
 
 PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
@@ -16,7 +16,7 @@ CITATION_INFO_PATH = os.environ.get('CITATION_INFO_PATH', '')
 
 def get_redirected_url(doi):
     """
-    DOI를 사용해 최종 리다이렉션된 URL을 반환.
+    DOI를 통하여 웹페이지에 접속하여 최종 리다이렉션된 URL을 반환.
     """
 
     base_url = "https://doi.org/"

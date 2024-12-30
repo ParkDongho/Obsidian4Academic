@@ -92,33 +92,6 @@ def load_journal_list(csv_file_path):
     df = pd.read_csv(csv_file_path)
     return dict(zip(df['journal'], df['name_short']))
 
-def download_paper_info(semantic_id, ieee_paper_id=None, acm_paper_id=None, doi_id=None):
-    # Change working directory to output directory
-    PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
-    os.chdir(PAPER_INFO_PATH)
-
-    fields = 'title,authors,year,venue,abstract,citationCount,externalIds,publicationDate'
-    with Session() as session:
-        paper_metadata = get_paper_metadata(session, semantic_id, fields=fields)
-
-    if not paper_metadata:
-        print(f'No metadata found for paper ID {semantic_id}')
-        return None
-
-    yaml_content = create_yaml(paper_metadata, semantic_id)
-    if ieee_paper_id:
-        yaml_content['external_ids']['IEEE'] = ieee_paper_id
-    if acm_paper_id:
-        yaml_content['external_ids']['ACM'] = acm_paper_id
-    if doi_id:
-        yaml_content['external_ids']['DOI'] = doi_id
-
-    output_filename = f'{semantic_id}.yaml'
-    with open(output_filename, 'w') as yamlfile:
-        yaml.dump(yaml_content, yamlfile, default_flow_style=False, allow_unicode=True)
-
-    time.sleep(3)
-    print(f'Wrote YAML for paper ID {semantic_id} to {output_filename}')
 
 
 
@@ -158,8 +131,29 @@ def save_paper_info(s2id_file):
     PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
     # Create output directory if it doesn't exist
     os.makedirs(PAPER_INFO_PATH, exist_ok=True)
-
     get_paper_info(s2id_file)
+
+
+def save_paper_info_from_paper_list(new_paper_list):
+    """
+    `new_paper_list.txt` 파일을 읽어 paper_info를 yaml 확장자로 저장합니다.
+
+    :param new_paper_list: `new_paper_list.txt` 파일 경로
+    :return: 반환값 없음
+    """
+
+    # Change working directory to output directory
+    PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
+    # NEW_PAPER_LIST = os.environ.get('NEW_PAPER_LIST', '')
+
+    os.makedirs(PAPER_INFO_PATH, exist_ok=True)
+    os.chdir(PAPER_INFO_PATH)
+
+    with open(new_paper_list, 'r') as s2id_file:
+        s2ids = [line.strip() for line in s2id_file.readlines()]
+    for paper_id in s2ids:
+        save_paper_info_from_semantic_id(paper_id)
+
 
 def save_paper_info_from_semantic_id(semantic_id, ieee_paper_id=None, acm_paper_id=None, doi_id=None):
     PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
@@ -168,6 +162,35 @@ def save_paper_info_from_semantic_id(semantic_id, ieee_paper_id=None, acm_paper_
                         ieee_paper_id=ieee_paper_id,
                         acm_paper_id=acm_paper_id,
                         doi_id=doi_id)
+
+
+def download_paper_info(semantic_id, ieee_paper_id=None, acm_paper_id=None, doi_id=None):
+    # Change working directory to output directory
+    PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
+    os.chdir(PAPER_INFO_PATH)
+
+    fields = 'title,authors,year,venue,abstract,citationCount,externalIds,publicationDate'
+    with Session() as session:
+        paper_metadata = get_paper_metadata(session, semantic_id, fields=fields)
+
+    if not paper_metadata:
+        print(f'No metadata found for paper ID {semantic_id}')
+        return None
+
+    yaml_content = create_yaml(paper_metadata, semantic_id)
+    if ieee_paper_id:
+        yaml_content['external_ids']['IEEE'] = ieee_paper_id
+    if acm_paper_id:
+        yaml_content['external_ids']['ACM'] = acm_paper_id
+    if doi_id:
+        yaml_content['external_ids']['DOI'] = doi_id
+
+    output_filename = f'{semantic_id}.yaml'
+    with open(output_filename, 'w') as yamlfile:
+        yaml.dump(yaml_content, yamlfile, default_flow_style=False, allow_unicode=True)
+
+    time.sleep(3)
+    print(f'Wrote YAML for paper ID {semantic_id} to {output_filename}')
 
 if __name__ == "__main__":
     save_paper_info(NEW_PAPER_LIST)

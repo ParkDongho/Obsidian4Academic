@@ -1,6 +1,6 @@
 
 ```dataview
-table without id title + "<sup>" + (toal_citation + "") + "</sup><br>" + subtitle + "<br><br>" + tldr as "Overview"
+table without id title + "<sup>" + (total_citation + "") + "</sup><br>" + subtitle + "<br><br>" + tldr as "Overview"
 where file.name = this.file.name
 ```
 
