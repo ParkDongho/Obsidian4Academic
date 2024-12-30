@@ -1,16 +1,15 @@
 from bs4 import BeautifulSoup
-import argparse
 import os
 import json
 import requests
 import argparse
 import re
 
-from docutils.nodes import caption
-from mistune import markdown
-from orca.punctuation_settings import section
 from selenium import webdriver
 import time
+
+from semantic_scholar import get_semantic_id_from_ieee_id
+from semantic_scholar import get_semantic_id_from_doi
 
 from bs4 import Tag, NavigableString
 
@@ -161,7 +160,7 @@ def parseParagraph(paragraph, ieee_paper_info):
                 elif isinstance(paragrph_element, Tag):
                     # inline formula
                     if paragrph_element.name == "inline-formula":
-                        latex_code = paragrph_element.find('script', {'type': 'math/tex'}).text
+                        latex_code = paragrph_element.find('academic-copilot', {'type': 'math/tex'}).text
                         latex_code = latex_code.replace("\n", "")
                         paragraph_contetns_list.append(f"${latex_code}$")
 
@@ -326,10 +325,19 @@ def extract_references(driver, ieee_paper_info):
                 if link_text and href:
                     links[link_text] = href
 
+                if link_text == "CrossRef":
+                    semantic_id = get_semantic_id_from_doi(href.remove("https://doi.org/"))
+                elif link_text == "View Article":
+                    semantic_id = get_semantic_id_from_ieee_id(href.remove("https://ieeexplore.ieee.org/document/"))
+
+
+
+
             reference_list.append({
                 "number": number,
                 "title": title,
-                "links": links
+                "links": links,
+                "semantic": semantic_id,
             })
         except Exception as e:
             print(f"Error processing reference: {e}")
