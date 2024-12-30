@@ -1,7 +1,7 @@
 import os
 import yaml
-import get_doi_from_ieee_id
-from script.semantic_scholar.paper_repo_searcher import get_semantic_scholar_id_from_doi
+from semantic_scholar.get_doi_from_ieee_id import get_doi_from_ieee_id
+from semantic_scholar.get_semantic_id_from_doi import get_semantic_scholar_id_from_doi
 
 
 def map_ieee_to_semantic(directory, ieee_paper_number):

@@ -1,6 +1,5 @@
 import requests
 from semantic_scholar import get_doi_from_ieee_id
-from semantic_scholar.get_semantic_id_from_doi import get_semantic_scholar_id_from_doi
 from semantic_scholar.search_from_database import search_from_database
 from semantic_scholar.get_paper_info import save_paper_info
 

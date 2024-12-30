@@ -14,6 +14,7 @@ dotenv.load_dotenv()
 PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
 JOURNAL_LIST_PATH = os.environ.get('JOURNAL_LIST_PATH', '')
 S2_API_KEY = os.environ.get('S2_API_KEY', '')
+NEW_PAPER_LIST = os.environ.get('NEW_PAPER_LIST', '')
 
 def create_yaml(metadata, paper_id):
     authors = [author['name'] for author in metadata.get('authors', [])]
@@ -140,6 +141,4 @@ def save_paper_info(s2id_file):
     get_paper_info(s2id_file)
 
 if __name__ == "__main__":
-    save_paper_info(
-        '/home/parkdongho/dev/Obsidian4Academic/20_Works/21_Research/1_paper_archive/new_paper_list.txt',
-    )
+    save_paper_info(NEW_PAPER_LIST)
