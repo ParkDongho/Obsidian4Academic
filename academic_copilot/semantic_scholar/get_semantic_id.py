@@ -1,4 +1,5 @@
 import requests
+
 from academic_copilot.semantic_scholar.get_doi_from_ieee_id import get_doi_from_ieee_id
 from academic_copilot.semantic_scholar.search_from_database import search_from_database
 from academic_copilot.semantic_scholar.get_paper_info import save_paper_info, save_paper_info_from_id
@@ -8,10 +9,12 @@ PAPER_INFO_PATH = os.environ.get('PAPER_INFO_PATH', '')
 
 def get_semantic_id_from_doi(doi_id, ieee_paper_id=None, acm_paper_id=None):
     """
-    Get the Semantic Scholar ID using DOI.
+    Get the Semantic **Scholar ID** using **DOI**. `(DOI -> Semantic Scholar ID)`
 
     - **Step 1:** search for the DOI number in the YAML files
     - **Step 2:** if not found, fetch Semantic Scholar ID from DOI
+
+        * Step 2.1: Create new YAML file with this information
     """
 
     # Step 1: search for the DOI number in the YAML files
