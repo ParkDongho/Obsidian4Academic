@@ -7,7 +7,7 @@ from typing import Any, Dict
 import re
 import dotenv
 
-from academic_copilot.semantic_scholar.get_journal_id import get_journal_id_from_doi
+from academic_copilot.semantic_scholar.get_academic_id import get_journal_id_from_doi
 
 dotenv.load_dotenv()
 

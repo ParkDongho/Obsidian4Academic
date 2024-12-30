@@ -15,8 +15,8 @@ from selenium import webdriver
 import time
 
 from bs4 import Tag, NavigableString
-from academic_copilot.semantic_scholar.get_semantic_id import get_semantic_id_from_ieee_id
-from academic_copilot.semantic_scholar.get_semantic_id import get_semantic_id_from_doi
+from academic_copilot.semantic_scholar.get_academic_id import get_semantic_id_from_ieee_id
+from academic_copilot.semantic_scholar.get_academic_id import get_semantic_id_from_doi
 
 
 def convert_to_markdown_link(title):
