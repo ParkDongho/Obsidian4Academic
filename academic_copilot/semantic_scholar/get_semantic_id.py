@@ -10,17 +10,17 @@ def get_semantic_id_from_doi(doi_id):
     """
     Get the Semantic Scholar ID using DOI.
     """
-    # Step 1: search for the IEEE paper number in the YAML files
+    # Step 1: search for the DOI number in the YAML files
     semantic_id = search_from_database(
         "DOI", doi_id,
         "SEMANTIC", PAPER_INFO_PATH)
 
+    # Step 2: if not found, fetch DOI and Semantic Scholar ID
     if not semantic_id:
-        url = f"https://api.semanticscholar.org/graph/v1/paper/DOI:{doi_id}?fields=paperId"
-        response = requests.get(url)
-        if response.status_code == 200:
-            return response.json().get('paperId', None)
-        return None
+        semantic_id = get_semantic_id_from_doi(doi)
+        # Step 2.1: Create new YAML file with this information
+        save_paper_info_from_id(semantic_id)
+
     return semantic_id
 
 
