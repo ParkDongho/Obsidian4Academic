@@ -1,9 +1,3 @@
-# academic_copilot.semantic_scholar.get_academic_id
-from .get_academic_id import get_semantic_id_from_doi # doi -> semantic_id
-from .get_academic_id import get_semantic_id_from_ieee_id # ieee_id -> semantic_id
-from .get_academic_id import get_journal_id_from_doi # doi -> Tuple(source, document_id)
-from .get_academic_id import get_doi_from_ieee_id # ieee_id -> doi
-
 # academic_copilot.semantic_scholar.get_biblio_info
 
 
@@ -11,6 +5,11 @@ from .get_academic_id import get_doi_from_ieee_id # ieee_id -> doi
 # academic_copilot.semantic_scholar.get_paper_info
 from .get_paper_info import save_paper_info_from_semantic_id
 from .get_paper_info import save_paper_info_from_paper_list
+
+from .get_paper_info import get_semantic_id_from_doi # doi -> semantic_id
+from .get_paper_info import get_semantic_id_from_ieee_id # ieee_id -> semantic_id
+from .get_paper_info import get_journal_id_from_doi # doi -> Tuple(source, document_id)
+from .get_paper_info import get_doi_from_ieee_id # ieee_id -> doi
 
 
 # academic_copilot.semantic_scholar.academic_database

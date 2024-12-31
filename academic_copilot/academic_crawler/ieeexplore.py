@@ -3,6 +3,7 @@ import argparse
 import os
 import json
 import requests
+from requests import Session
 import argparse
 import re
 
@@ -15,8 +16,8 @@ from selenium import webdriver
 import time
 
 from bs4 import Tag, NavigableString
-from academic_copilot.semantic_scholar.get_academic_id import get_semantic_id_from_ieee_id
-from academic_copilot.semantic_scholar.get_academic_id import get_semantic_id_from_doi
+from academic_copilot.semantic_scholar.get_paper_info import get_semantic_id_from_ieee_id
+from academic_copilot.semantic_scholar.get_paper_info import get_semantic_id_from_doi
 
 
 def convert_to_markdown_link(title):
@@ -262,7 +263,7 @@ def download_images(driver, ieee_paper_info):
 
     # Selenium에서 쿠키 가져오기
     cookies = driver.get_cookies()
-    session = requests.Session()
+    session = Session()
 
     # requests 세션에 쿠키 추가
     for cookie in cookies:
@@ -324,7 +325,7 @@ def extract_references(driver, ieee_paper_info):
             # 링크들
             links = {}
             link_elements = ref.select(".ref-link a")
-            semantic_id = "None"
+            semantic_id = None
             for link in link_elements:
                 link_text = link.text.strip()
                 href = link.get("href")
@@ -345,8 +346,15 @@ def extract_references(driver, ieee_paper_info):
                 "links": links,
                 "semantic": semantic_id
             })
+
         except Exception as e:
-            print(f"Error processing reference: {e}")
+            print(f"error processing reference: {e}")
+            reference_list.append({
+                "number": number,
+                "title": title,
+                "links": links,
+                "semantic": None
+            })
 
     ieee_paper_info['reference_info'] = reference_list
     return ieee_paper_info

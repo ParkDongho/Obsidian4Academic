@@ -41,6 +41,15 @@
             "semantic": "a821a00c54749a69a9d9fe0a7411de590d247715"
         },
         {
+            "number": "5.",
+            "title": "Xuechao Wei et al., \"Automated systolic array architecture synthesis for high throughput cnn inference on fpgas\", DAC, 2017.",
+            "links": {
+                "View Article": "/document/8022361",
+                "Google Scholar": "https://scholar.google.com/scholar?as_q=Automated+systolic+array+architecture+synthesis+for+high+throughput+cnn+inference+on+fpgas&as_occt=title&hl=en&as_sdt=0%2C31"
+            },
+            "semantic": null
+        },
+        {
             "number": "6.",
             "title": "Y. Wang et al., \"Deepburning: Automatic generation of fpga-based learning accelerators for the neural network family\", DAC, 2016.",
             "links": {
@@ -110,6 +119,15 @@
                 "Google Scholar": "https://scholar.google.com/scholar?as_q=ShiDianNao%3A+Shifting+vision+processing+closer+to+the+sensor&as_occt=title&hl=en&as_sdt=0%2C31"
             },
             "semantic": "bd6507b5c9deaf87bda81e59ce15b2309df0bf37"
+        },
+        {
+            "number": "14.",
+            "title": "S. Venkataramani et al., \"ScaleDeep: A Scalable Compute Architecture for Learning and Evaluating Deep Networks\", ISCA, 2017.",
+            "links": {
+                "View Article": "/document/8022583",
+                "Google Scholar": "https://scholar.google.com/scholar?as_q=ScaleDeep%3A+A+Scalable+Compute+Architecture+for+Learning+and+Evaluating+Deep+Networks&as_occt=title&hl=en&as_sdt=0%2C31"
+            },
+            "semantic": null
         },
         {
             "number": "15.",
