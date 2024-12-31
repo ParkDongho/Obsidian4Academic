@@ -16,6 +16,13 @@ S2_API_KEY = os.environ.get('S2_API_KEY', '')
 NEW_PAPER_LIST = os.environ.get('NEW_PAPER_LIST', '')
 
 def create_yaml(metadata, paper_id):
+    """
+    Create a YAML file from the metadata of a paper.
+
+    :param metadata: metadata of a paper
+    :param paper_id: semantic scholar paper id
+    :return: yaml data
+    """
     authors = [author['name'] for author in metadata.get('authors', [])]
     title = metadata.get('title', 'Unknown Title')
     date = metadata.get('publicationDate', 'Unknown Date')
